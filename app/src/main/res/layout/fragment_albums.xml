@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-<!--  ImageView для примера. При имплементации альбомов нужно переделать данный layout файл  -->
-    <ImageView
-        android:id="@+id/iv_image"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_albums"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@null" />
+        android:clipToPadding="false"
+        android:paddingVertical="8dp"
+        android:paddingBottom="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--  ImageView для примера. При имплементации альбомов нужно переделать данный layout файл  -->
