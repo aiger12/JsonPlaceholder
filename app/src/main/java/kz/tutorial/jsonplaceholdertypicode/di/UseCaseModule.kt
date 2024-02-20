@@ -21,4 +21,5 @@ val useCaseModule = module {
     factory<GetUserUseCase> { GetUserUseCaseImpl(get()) }
     factory<GetAlbumsUseCase> { GetAlbumsUseCaseImpl(get())}
     factory <GetShowAllCommentsUseCase> { GetShowAllCommentsUseCaseImpl(get())}
+
 }

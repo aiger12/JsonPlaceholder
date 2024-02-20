@@ -12,7 +12,7 @@ import kz.tutorial.jsonplaceholdertypicode.presentation.utils.EmailClickListener
 class CommentsAdapter(
     private val layoutInflater: LayoutInflater,
     private val emailClickListener: EmailClickListener,
-//    var listener: ClickListener<Comment>? = null
+   // var listener: ClickListener<Comment>? = null
 
 ) : ListAdapter<Comment, CommentViewHolder>(CommentsDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
