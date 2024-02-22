@@ -1,14 +1,70 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.users
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kz.tutorial.jsonplaceholdertypicode.R
+import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
+import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostAdapter
+import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class UsersFragment : Fragment(R.layout.fragment_users) {
-    /*
+class UsersFragment : Fragment() {
+    private val vm: UsersViewModel by viewModel()
 
-        Рекомендую идти снизу вверх по древу зависимостей:
-        Запрос, моделька у вас уже есть, метод в репо есть
-        Осталось сделать GetAllUsersUseCase, ViewModel и потом UI
-        Также, не забываем про клик на имейл
-     */
+    lateinit var rvUsers: RecyclerView
+
+    lateinit var usersAdapter: UsersAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        return inflater.inflate(R.layout.fragment_users, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initViews(view)
+        initAdapter()
+        initRecycler()
+        initObservers()
+    }
+
+    private fun initViews(view: View) {
+        rvUsers = view.findViewById(R.id.rv_users)
+    }
+
+    private fun initAdapter() {
+        usersAdapter = UsersAdapter(layoutInflater) { email ->
+            context?.openEmailWithAddress(email)
+        }
+//        usersAdapter.listener = ClickListener {
+//            findNavController().navigate(PostsFragmentDirections.toPostDetails(it.id))
+//        }
+    }
+
+    private fun initRecycler() {
+        val currentContext = context ?: return
+
+        rvUsers.adapter = usersAdapter
+        rvUsers.layoutManager = LinearLayoutManager(currentContext)
+
+        val spaceItemDecoration =
+            SpaceItemDecoration(verticalSpaceInDp = 4, horizontalSpaceInDp = 16)
+        rvUsers.addItemDecoration(spaceItemDecoration)
+    }
+
+    private fun initObservers() {
+        vm.usersLiveData.observe(viewLifecycleOwner) {
+            usersAdapter.setData(it)
+        }
+    }
 }

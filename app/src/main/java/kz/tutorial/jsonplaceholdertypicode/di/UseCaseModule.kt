@@ -8,7 +8,7 @@ import kz.tutorial.jsonplaceholdertypicode.data.use_case.GetPostsUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.data.use_case.GetShowAllCommentsUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.data.use_case.GetUserUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetAlbumsUseCase
-import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetAllUsersUseCase
+import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetUsersUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetPostPreviewCommentsUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetPostUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetPostsUseCase
@@ -23,5 +23,5 @@ val useCaseModule = module {
     factory<GetUserUseCase> { GetUserUseCaseImpl(get()) }
     factory<GetAlbumsUseCase> { GetAlbumsUseCaseImpl(get())}
     factory <GetShowAllCommentsUseCase> { GetShowAllCommentsUseCaseImpl(get())}
-    factory<GetAllUsersUseCase>{GetAllUsersUseCaseImpl(get())}
+    factory<GetUsersUseCase>{GetAllUsersUseCaseImpl(get())}
 }
