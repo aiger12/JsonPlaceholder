@@ -6,7 +6,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.entity.Album
 import kz.tutorial.jsonplaceholdertypicode.domain.repository.PhotoRepository
 import kz.tutorial.jsonplaceholdertypicode.domain.repository.UserRepository
 
-class PhotoRepositoryImpl(
+class AlbumsRepositoryImpl(
     private val mainApi: MainApi,
     private val userRepository: UserRepository,
     private val albumMapper: AlbumMapper,

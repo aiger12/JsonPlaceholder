@@ -35,4 +35,5 @@ interface MainApi {
 
     @GET("users")
     suspend fun getUsers(): List<User>
+
 }

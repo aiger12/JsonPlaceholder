@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/albums_image"
+            android:id="@+id/photo_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
@@ -30,21 +30,13 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/albums_name"
+                android:id="@+id/proto_name"
                 style="@style/Header2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/text_01"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/albums_users"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="@color/main_01"
-                android:textSize="14sp" />
 
         </LinearLayout>
 

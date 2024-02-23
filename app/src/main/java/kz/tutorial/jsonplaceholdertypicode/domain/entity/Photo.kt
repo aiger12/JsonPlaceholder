@@ -1,11 +1,9 @@
 package kz.tutorial.jsonplaceholdertypicode.domain.entity
 
-
-
-data class Album(
-    val userId: Int,
+data class Photo(
+    val albumId: Int,
     val id: Int,
+    val thumbnailUrl: String,
     val title: String,
-    val username: String,
-    val photoUrl: String,
+    val url: String
 )

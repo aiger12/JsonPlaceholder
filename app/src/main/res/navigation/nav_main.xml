@@ -30,7 +30,11 @@
     <!--    If we match the ids with the menu items, it should associate them and automatically trigger the required fragment-->
     <fragment
         android:id="@+id/menu_albums"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsFragment"/>
+        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsFragment">
+        <action
+            android:id="@+id/action_menu_albums_to_photo_albums"
+            app:destination="@id/photo_albums" />
+    </fragment>
 
     <fragment
         android:id="@+id/show_all_fragment"
@@ -49,5 +53,8 @@
     <fragment
         android:id="@+id/menu_profile"
         android:name="kz.tutorial.jsonplaceholdertypicode.presentation.profile.ProfileFragment"/>
+    <fragment
+        android:id="@+id/photo_albums"
+        android:label="ScrollingFragment" />
 
 </navigation>

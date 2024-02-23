@@ -18,6 +18,5 @@ class AlbumsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         albumsName.text = album.title
         albumsUser.text = album.username
         Glide.with(itemView).load(album.photoUrl).into(albumsImage)
-
     }
 }

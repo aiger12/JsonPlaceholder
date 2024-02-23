@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Album
-import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
-import kz.tutorial.jsonplaceholdertypicode.presentation.utils.AlbumClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 
 class AlbumsAdapter(
@@ -26,5 +24,6 @@ class AlbumsAdapter(
         holder.itemView.setOnClickListener{
             listener?.onClick(album)
         }
+
     }
     }
