@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cv_post"
+    android:id="@+id/cv_users"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground">
-    <!--    The last line is added to add the ripple effect on click-->
 
     <LinearLayout
         android:layout_width="match_parent"

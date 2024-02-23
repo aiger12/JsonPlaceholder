@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,9 +47,9 @@ class UsersFragment : Fragment() {
         usersAdapter = UsersAdapter(layoutInflater) { email ->
             context?.openEmailWithAddress(email)
         }
-//        usersAdapter.listener = ClickListener {
-//            findNavController().navigate(PostsFragmentDirections.toPostDetails(it.id))
-//        }
+        usersAdapter.listener = ClickListener {
+            NavHostFragment.findNavController(this).navigate(UsersFragmentDirections.usersToUserDetails(it.id))
+        }
     }
 
     private fun initRecycler() {
