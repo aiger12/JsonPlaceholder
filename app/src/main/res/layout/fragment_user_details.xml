@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
-        android:text="Username is here"
+        tools:text="Username is here"
         android:textColor="@color/text_01" />
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Company"
+            tools:text="Company"
             android:textColor="@color/text_01" />
 
         <include
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Address"
+            tools:text="Address"
             android:textColor="@color/text_01" />
 
         <include

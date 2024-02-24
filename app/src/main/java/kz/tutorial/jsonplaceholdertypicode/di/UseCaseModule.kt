@@ -21,7 +21,7 @@ val useCaseModule = module {
     factory<GetPostUseCase> { GetPostUseCaseImpl(get()) }
     factory<GetPostPreviewCommentsUseCase> { GetPostPreviewCommentsUseCaseImpl(get()) }
     factory<GetUserUseCase> { GetUserUseCaseImpl(get()) }
-    factory<GetAlbumsUseCase> { GetAlbumsUseCaseImpl(get())}
-    factory <GetShowAllCommentsUseCase> { GetShowAllCommentsUseCaseImpl(get())}
-    factory<GetUsersUseCase>{GetAllUsersUseCaseImpl(get())}
+    factory<GetAlbumsUseCase> { GetAlbumsUseCaseImpl(get()) }
+    factory<GetShowAllCommentsUseCase> { GetShowAllCommentsUseCaseImpl(get()) }
+    factory<GetUsersUseCase> { GetAllUsersUseCaseImpl(get()) }
 }
