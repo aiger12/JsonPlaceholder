@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Album
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListenerWithThree
 
 class AlbumsAdapter(
     private val layoutInflater: LayoutInflater):

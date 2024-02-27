@@ -50,8 +50,6 @@ class AlbumsFragment : Fragment(R.layout.fragment_albums) {
     private fun initAdapter(){
         adapter = AlbumsAdapter(layoutInflater)
         adapter.listener
-
-
     }
 
     private fun initRecycler(){

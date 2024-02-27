@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
+import kz.tutorial.jsonplaceholdertypicode.presentation.albums.photo.PhotoDiffCallBack
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.EmailClickListener
 

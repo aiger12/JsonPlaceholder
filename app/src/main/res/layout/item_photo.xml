@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv_album"
+    android:id="@+id/cv_photo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:foreground="?android:attr/selectableItemBackground">
@@ -16,6 +16,7 @@
             android:id="@+id/photo_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="album_image"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,12 +31,14 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/proto_name"
+                android:id="@+id/photo_title"
                 style="@style/Header2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="album_name"
                 android:textColor="@color/text_01"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

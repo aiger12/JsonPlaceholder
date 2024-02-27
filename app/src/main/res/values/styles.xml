@@ -44,4 +44,10 @@
         <item name="cardElevation">4dp</item>
     </style>
 
+    <style name="UserName">
+        <item name="android:textSize">17sp</item>
+        <item name="fontWeight">700</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

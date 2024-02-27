@@ -4,6 +4,7 @@ import kz.tutorial.jsonplaceholdertypicode.data.entity.AlbumRemote
 import kz.tutorial.jsonplaceholdertypicode.data.entity.PhotoRemote
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Album
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
+import kz.tutorial.jsonplaceholdertypicode.domain.entity.Photo
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.domain.repository.PhotoRepository
@@ -35,5 +36,11 @@ interface MainApi {
 
     @GET("users")
     suspend fun getUsers(): List<User>
+
+    @GET("photos")
+    suspend fun getPhotos():List<Photo>
+
+    @GET("photos/{id}")
+    suspend fun getPhoto(@Path("id") id:Int):Photo
 
 }
