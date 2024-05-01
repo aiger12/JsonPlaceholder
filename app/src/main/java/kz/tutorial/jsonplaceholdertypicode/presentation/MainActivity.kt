@@ -8,28 +8,19 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kz.tutorial.jsonplaceholdertypicode.R
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var bnvMain: BottomNavigationView
+class MainActivity: AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        assignViews()
-        initBottomNav()
+        initNav()
+    }
+    private fun initNav() {
+        val navHostMainFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_main_fragment) as NavHostFragment
+        navController = navHostMainFragment.navController
     }
 
-    private fun assignViews() {
-        bnvMain = findViewById(R.id.bnv_main)
-    }
-
-    private fun initBottomNav() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
-        bnvMain.setupWithNavController(navController)
-        //Forgot how to connect nav with bottomNav
-    }
 }

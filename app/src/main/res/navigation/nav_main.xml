@@ -3,66 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/menu_posts">
-    <!--Здесь мы не мэтчили айди и поэтому нажатие на меню айтем поста не открывает посты-->
-    <!--    Вот теперь всё работает)-->
+    app:startDestination="@id/loginFragment">
+
     <fragment
-        android:id="@+id/menu_posts"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragment">
+        android:id="@+id/loginFragment"
+        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.register.LoginFragment">
         <action
-            android:id="@+id/to_post_details"
-            app:destination="@+id/post_details" />
-    </fragment>
-
-
-    <fragment
-        android:id="@+id/post_details"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragment">
-        <argument
-            android:name="post_id"
-            app:argType="integer"
-            app:nullable="false" />
-        <action
-            android:id="@+id/action_post_details_to_showAllFragment"
-            app:destination="@id/show_all_fragment" />
-    </fragment>
-
-    <!--    If we match the ids with the menu items, it should associate them and automatically trigger the required fragment-->
-    <fragment
-        android:id="@+id/menu_albums"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsFragment" />
-
-    <fragment
-        android:id="@+id/show_all_fragment"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.show_all_comments.ShowAllFragment"
-        android:label="ShowAllFragment">
-        <argument
-            android:name="post_id"
-            app:argType="integer"
-            app:nullable="false" />
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/menu_users"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersFragment">
-        <action
-            android:id="@+id/users_to_user_details"
-            app:destination="@id/user_details" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/user_details"
-        android:name="kz.tutorial.jsonplaceholdertypicode.UserDetailsFragment"
-        tools:layout="@layout/fragment_user_details">
-        <argument
-            android:name="post_id"
-            app:argType="integer"
-            app:nullable="false" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/menu_profile"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.profile.ProfileFragment" />
-
-
+        android:id="@+id/registerFragment"
+        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.register.RegisterFragment"/>
 </navigation>
