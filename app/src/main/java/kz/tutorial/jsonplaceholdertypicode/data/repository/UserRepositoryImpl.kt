@@ -18,7 +18,7 @@ class UserRepositoryImpl(
         return mainApi.getUsers()
     }
 
-    override suspend fun login(loginRequest: LoginRequest): Token {
+    override suspend fun login(loginRequest: LoginRequest): Response<Token> {
         return mainApi.login(loginRequest)
     }
 }

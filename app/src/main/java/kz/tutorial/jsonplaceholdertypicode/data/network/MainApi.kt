@@ -40,7 +40,7 @@ interface MainApi {
     suspend fun getUsers(): List<User>
 
     @POST("users/login")
-    fun login(@Body request: LoginRequest): Token
+    fun login(@Body request: LoginRequest): Response<Token>
 }
 
 

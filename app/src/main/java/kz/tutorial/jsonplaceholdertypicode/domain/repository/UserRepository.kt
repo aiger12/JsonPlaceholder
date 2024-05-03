@@ -10,5 +10,5 @@ interface UserRepository {
 
     suspend fun getUsers(): List<User>
 
-    suspend fun login(loginRequest: LoginRequest): Token
+    suspend fun login(loginRequest: LoginRequest): Response<Token>
 }

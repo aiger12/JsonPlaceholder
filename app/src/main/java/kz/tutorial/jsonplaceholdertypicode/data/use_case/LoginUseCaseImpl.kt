@@ -11,6 +11,13 @@ import javax.security.auth.login.LoginException
 class LoginUseCaseImpl(private val userRepository: UserRepository) : LoginUseCase {
     override suspend fun login(username: String, password: String): Token {
         val loginRequest = LoginRequest(username, password)
-        return  userRepository.login(loginRequest)
+        val response = userRepository.login(loginRequest)
+
+        if (response.isSuccessful) {
+            return response.body()!!
+        } else {
+            Timber.tag("eror").d("${response.code()}")
+            throw LoginException("Login failed: ${response.code()}")
+        }
     }
 }
