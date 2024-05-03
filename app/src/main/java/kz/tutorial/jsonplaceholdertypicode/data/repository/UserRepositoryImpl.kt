@@ -1,6 +1,7 @@
 package kz.tutorial.jsonplaceholdertypicode.data.repository
 
 import kz.tutorial.jsonplaceholdertypicode.data.network.MainApi
+import kz.tutorial.jsonplaceholdertypicode.domain.entity.Token
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.domain.repository.UserRepository
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
@@ -17,7 +18,7 @@ class UserRepositoryImpl(
         return mainApi.getUsers()
     }
 
-    override suspend fun login(loginRequest: LoginRequest): Response<User> {
+    override suspend fun login(loginRequest: LoginRequest): Token {
         return mainApi.login(loginRequest)
     }
 }

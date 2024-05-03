@@ -5,6 +5,7 @@ import kz.tutorial.jsonplaceholdertypicode.data.entity.PhotoRemote
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Album
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
+import kz.tutorial.jsonplaceholdertypicode.domain.entity.Token
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.domain.repository.PhotoRepository
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
@@ -38,8 +39,8 @@ interface MainApi {
     @GET("users")
     suspend fun getUsers(): List<User>
 
-    @POST("/login")
-    fun login(@Body request: LoginRequest): Response<User>
+    @POST("users/login")
+    fun login(@Body request: LoginRequest): Token
 }
 
 
