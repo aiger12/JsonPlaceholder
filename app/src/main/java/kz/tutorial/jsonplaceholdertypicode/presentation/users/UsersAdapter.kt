@@ -55,7 +55,7 @@ class UsersViewHolder(
 
     fun bind(user: User) {
         tvUserName.text = user.username
-        tvFullName.text = user.name
+        tvFullName.text = user.first_name
         tvEmail.text = user.email
         tvEmail.setOnClickListener { emailClickListener.onEmailClick(user.email) }
     }

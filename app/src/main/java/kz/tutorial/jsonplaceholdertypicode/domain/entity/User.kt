@@ -1,12 +1,9 @@
 package kz.tutorial.jsonplaceholdertypicode.domain.entity
 
 data class User(
-    val address: Address,
-    val company: Company,
     val email: String,
     val id: Int,
-    val name: String,
-    val phone: String,
+    val first_name: String,
+    val last_name: String,
     val username: String,
-    val website: String
 )

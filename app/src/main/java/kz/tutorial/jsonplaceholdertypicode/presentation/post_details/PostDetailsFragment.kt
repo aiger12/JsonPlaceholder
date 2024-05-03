@@ -85,7 +85,7 @@ class PostDetailsFragment : Fragment() {
             tvBody.text = post.body
         }
         vm.userLiveData.observe(viewLifecycleOwner) { user ->
-            tvAuthor.text = user.name
+            tvAuthor.text = user.first_name
         }
         vm.commentsLiveData.observe(viewLifecycleOwner) { comments ->
             commentsAdapter.submitList(comments)

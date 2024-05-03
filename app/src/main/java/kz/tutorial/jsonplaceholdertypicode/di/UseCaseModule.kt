@@ -7,6 +7,7 @@ import kz.tutorial.jsonplaceholdertypicode.data.use_case.GetPostUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.data.use_case.GetPostsUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.data.use_case.GetShowAllCommentsUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.data.use_case.GetUserUseCaseImpl
+import kz.tutorial.jsonplaceholdertypicode.data.use_case.LoginUseCaseImpl
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetAlbumsUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetUsersUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetPostPreviewCommentsUseCase
@@ -14,6 +15,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetPostUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetPostsUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetShowAllCommentsUseCase
 import kz.tutorial.jsonplaceholdertypicode.domain.use_case.GetUserUseCase
+import kz.tutorial.jsonplaceholdertypicode.domain.use_case.LoginUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -24,4 +26,5 @@ val useCaseModule = module {
     factory<GetAlbumsUseCase> { GetAlbumsUseCaseImpl(get()) }
     factory<GetShowAllCommentsUseCase> { GetShowAllCommentsUseCaseImpl(get()) }
     factory<GetUsersUseCase> { GetAllUsersUseCaseImpl(get()) }
+    factory<LoginUseCase> { LoginUseCaseImpl(get()) } // Add this line
 }

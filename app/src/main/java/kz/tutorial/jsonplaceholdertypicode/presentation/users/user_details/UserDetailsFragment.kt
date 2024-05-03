@@ -7,16 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.RecyclerView
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.constants.ID
 import kz.tutorial.jsonplaceholdertypicode.constants.USER_ID
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
 import kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersAdapter
-import kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersFragmentDirections
-import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -32,8 +28,8 @@ class UserDetailsFragment : Fragment() {
 
     lateinit var username_title: TextView
     lateinit var user_info_email: TextView
-    lateinit var user_info_name: TextView
-    lateinit var user_info_phone: TextView
+    lateinit var user_info_fist_name: TextView
+    lateinit var user_last_name: TextView
     lateinit var user_info_website: TextView
     lateinit var cvUserInfo: CardView
     lateinit var cvUserCompany: CardView
@@ -59,8 +55,8 @@ class UserDetailsFragment : Fragment() {
     private fun initViews(view: View) {
         username_title = view.findViewById(R.id.tv_username_title)
         user_info_email = view.findViewById(R.id.tv_user_info_email)
-        user_info_name = view.findViewById(R.id.tv_user_info_name)
-        user_info_phone = view.findViewById(R.id.tv_user_info_phone)
+        user_info_fist_name = view.findViewById(R.id.tv_user_info_name)
+        user_last_name = view.findViewById(R.id.tv_user_info_phone)
         user_info_website = view.findViewById(R.id.tv_user_info_website)
         cvUserInfo = view.findViewById(R.id.user_info_card)
         cvUserCompany = view.findViewById(R.id.user_company_card)
@@ -78,7 +74,7 @@ class UserDetailsFragment : Fragment() {
             user?.let {
                 username_title.text = user.username
                 initInfo(user)
-                view?.findViewById<TextView>(R.id.tv_user_company_name)?.text = user.company.toString()
+                view?.findViewById<TextView>(R.id.tv_user_company_name)?.text = "company"
 //                view?.findViewById<TextView>(R.id.tv_user_address)?.text = user.address
             }
         }
@@ -86,9 +82,9 @@ class UserDetailsFragment : Fragment() {
 
     private fun initInfo(user: User) {
         user_info_email.text = user.email
-        user_info_name.text = user.name
-        user_info_phone.text = user.phone
-        user_info_website.text = user.website
+        user_info_fist_name.text = user.first_name
+        user_last_name.text = user.last_name
+        user_info_website.text = "empty"
     }
 
 

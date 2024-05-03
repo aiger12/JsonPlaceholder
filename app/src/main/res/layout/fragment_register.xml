@@ -70,18 +70,17 @@
             />
 
         <EditText
+            android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_corner"
             android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="12dp"
             android:textColor="@color/text_01"
             android:textColorHint="@color/text_02"
-            android:textSize="15sp"
-            android:background="@drawable/rounded_corner"
-            android:padding="12dp"
-            android:inputType="textPassword"
-            android:id="@+id/password_input"
-            />
+            android:textSize="15sp" />
 
         <EditText
             android:layout_width="match_parent"
