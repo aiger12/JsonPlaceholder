@@ -21,11 +21,12 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : ViewModel() {
     // Method to perform login
     fun login(username: String, password: String, callback: (Boolean) -> Unit) {
         viewModelScope.launch {
-            try {
-                val user = loginUseCase.login(username, password) // Update live data with logged-in user
-            } catch (e: Exception) {
-                Timber.tag("eror").d(e.message)
-            }
+
+                loginUseCase.login(username, password)?.apply {
+                    if(isSuccessful){
+
+                    }
+                } // Update live data with logged-in user
         }
     }
 }

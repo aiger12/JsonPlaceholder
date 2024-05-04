@@ -9,6 +9,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.entity.Token
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.domain.repository.PhotoRepository
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -40,7 +41,7 @@ interface MainApi {
     suspend fun getUsers(): List<User>
 
     @POST("users/login")
-    fun login(@Body request: LoginRequest): Response<Token>
+    fun login(@Body request: LoginRequest): Call<Response<Token>>
 }
 
 

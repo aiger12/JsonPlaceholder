@@ -5,6 +5,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.entity.Token
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.domain.repository.UserRepository
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
+import retrofit2.Call
 import retrofit2.Response
 
 class UserRepositoryImpl(
@@ -18,7 +19,7 @@ class UserRepositoryImpl(
         return mainApi.getUsers()
     }
 
-    override suspend fun login(loginRequest: LoginRequest): Response<Token> {
+    override suspend fun login(loginRequest: LoginRequest): Call<Response<Token>> {
         return mainApi.login(loginRequest)
     }
 }

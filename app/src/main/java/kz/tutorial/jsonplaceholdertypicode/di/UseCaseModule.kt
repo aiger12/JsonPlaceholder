@@ -26,5 +26,5 @@ val useCaseModule = module {
     factory<GetAlbumsUseCase> { GetAlbumsUseCaseImpl(get()) }
     factory<GetShowAllCommentsUseCase> { GetShowAllCommentsUseCaseImpl(get()) }
     factory<GetUsersUseCase> { GetAllUsersUseCaseImpl(get()) }
-    factory<LoginUseCase> { LoginUseCaseImpl(get()) } // Add this line
+    factory<LoginUseCase> { LoginUseCaseImpl(get()) } // Добавленная зависимость для LoginUseCase
 }
