@@ -19,6 +19,10 @@ import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.IOException
 
 /**
  * A simple [Fragment] subclass.
