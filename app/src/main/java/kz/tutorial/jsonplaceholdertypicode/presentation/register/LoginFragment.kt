@@ -52,24 +52,25 @@ class LoginFragment : Fragment() {
 
             val request = LoginRequest(username, password)
 
-                lifecycleScope.launch {
-                    val response = try {
-                        RetrofitClient.apiService.login(request)
-                    } catch (e: Exception) {
-                        Log.d("LoginFragment", "Error: ${e.message}")
-                        return@launch
-                    }
-
-                    if (response.isSuccessful) {
-                        val token = response.body()?.token
-                        if (token != null) {
-                            TokenManager.saveToken(requireContext(), token)
-                            Log.d("LoginFragment", "Token: $token")
-                        }
-                    } else {
-                        Log.d("LoginFragment", "Error: ${response.errorBody()?.string()}")
-                    }
+            lifecycleScope.launch {
+                val response = try {
+                    RetrofitClient.apiService.login(request)
+                } catch (e: Exception) {
+                    Log.d("LoginFragment", "Error: ${e.message}")
+                    return@launch
                 }
+
+                if (response.isSuccessful) {
+                    val token = response.body()?.token
+                    if (token != null) {
+                        TokenManager.saveToken(requireContext(), token)
+                        findNavController().navigate(R.id.action_loginFragment_to_nav_second)
+                        Log.d("LoginFragment", "Token: $token")
+                    }
+                } else {
+                    Log.d("LoginFragment", "Error: ${response.errorBody()?.string()}")
+                }
+            }
         }
     }
 
