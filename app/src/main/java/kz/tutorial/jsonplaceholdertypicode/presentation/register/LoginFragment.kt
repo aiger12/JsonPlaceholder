@@ -9,14 +9,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import kz.tutorial.jsonplaceholdertypicode.R
-import kz.tutorial.jsonplaceholdertypicode.constants.POST_ID_KEY
-import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragment
-import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragmentDirections
-import retrofit2.Call
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
+import kz.tutorial.jsonplaceholdertypicode.R
+import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
 
 
 /**

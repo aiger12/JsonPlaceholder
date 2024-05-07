@@ -1,37 +1,22 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.register
 
-import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
+import android.content.Context
+import kz.tutorial.jsonplaceholdertypicode.data.network.MainApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import android.content.Context
-import android.util.Log
-import retrofit2.Response
-
-data class LoginRequest(val username: String, val password: String)
-data class LoginResponse(val token: String)
-
-
-interface ApiService {
-    @POST("users/login")
-    suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
-}
-
 
 object RetrofitClient {
     private const val BASE_URL = "http://nt-odoo-development.norsec.tech:8000/"
 
-    val apiService: ApiService by lazy {
+    val apiService: MainApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        retrofit.create(ApiService::class.java)
+        retrofit.create(MainApi::class.java)
     }
 }
-
 object TokenManager {
     private const val TOKEN_KEY  = "token"
     fun saveToken(context: Context, token: String) {

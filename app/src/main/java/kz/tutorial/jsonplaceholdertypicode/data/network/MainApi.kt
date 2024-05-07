@@ -2,12 +2,15 @@ package kz.tutorial.jsonplaceholdertypicode.data.network
 
 import kz.tutorial.jsonplaceholdertypicode.data.entity.AlbumRemote
 import kz.tutorial.jsonplaceholdertypicode.data.entity.PhotoRemote
-import kz.tutorial.jsonplaceholdertypicode.domain.entity.Album
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
-import kz.tutorial.jsonplaceholdertypicode.domain.repository.PhotoRepository
+import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
+import kz.tutorial.jsonplaceholdertypicode.domain.response.LoginResponse
+import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface MainApi {
@@ -33,4 +36,7 @@ interface MainApi {
 
     @GET("users")
     suspend fun getUsers(): List<User>
+
+    @POST("users/login")
+    suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 }
