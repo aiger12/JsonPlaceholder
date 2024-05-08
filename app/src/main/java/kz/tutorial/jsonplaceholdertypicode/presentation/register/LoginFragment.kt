@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -55,18 +56,24 @@ class LoginFragment : Fragment() {
                 } catch (e: Exception) {
                     Log.d("LoginFragment", "Error: ${e.message}")
                     return@launch
+
+
+
                 }
 
                 if (response.isSuccessful) {
                     val token = response.body()?.token
                     if (token != null) {
                         TokenManager.saveToken(requireContext(), token)
+                        Toast.makeText(requireContext(), "Successfully logged in!", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_loginFragment_to_nav_second)
                         Log.d("LoginFragment", "Token: $token")
                     }
                 } else {
+                    Toast.makeText(requireContext(), "The username or password is incorrect. Please, try again.", Toast.LENGTH_SHORT).show()
                     Log.d("LoginFragment", "Error: ${response.errorBody()?.string()}")
                 }
+
             }
         }
     }
