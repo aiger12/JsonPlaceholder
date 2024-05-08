@@ -6,6 +6,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
+import kz.tutorial.jsonplaceholdertypicode.domain.request.RegisterRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.response.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -39,4 +40,8 @@ interface MainApi {
 
     @POST("users/login")
     suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
+
+    @POST("users/signup")
+    suspend fun register(@Body request: RegisterRequest): Response<Any>
+
 }

@@ -10,7 +10,12 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
+import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
+import kz.tutorial.jsonplaceholdertypicode.domain.request.RegisterRequest
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -48,15 +53,31 @@ class RegisterFragment : Fragment() {
             val lastnameText = lastname.text.toString()
             val emailText = email.text.toString()
             val repeatPasswordText = repeatPassword.text.toString()
-//          Log.i("", "username: $usernameText")
-//            Log.i("", "firstname: $firstnameText")
-//            Log.i("", "lastname: $lastnameText")
-//            Log.i("", "password: $passwordText")
-//            Log.i("", "rep password: $repeatPasswordText")
-//            Log.i("", "email: $emailText")
-//            Log.i("", "createdAt: $createdAt")
 
+            if (passwordText != repeatPasswordText) {
+                //TODO handle
+            }
 
+            //TODO add conditions to password. For example, check if the length is greater than 7
+            //TODO optional: check the email validity
+
+            val request = RegisterRequest(emailText, usernameText, firstnameText,
+                            lastnameText, passwordText)
+
+            lifecycleScope.launch {
+                val response = try {
+                    RetrofitClient.apiService.register(request)
+                } catch (e: Exception) {
+                    Log.d("RegisterFragment", "Error: ${e.message}")
+                    return@launch
+                }
+
+                if (response.isSuccessful) {
+                    //TODO make a success window and  navigation to a login page
+                } else {
+                    Log.d("LoginFragment", "Error: ${response.errorBody()?.string()}")
+                }
+            }
         }
     }
 

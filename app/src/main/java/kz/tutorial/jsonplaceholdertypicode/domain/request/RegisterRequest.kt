@@ -1,4 +1,4 @@
 package kz.tutorial.jsonplaceholdertypicode.domain.request
 
-data class RegisterRequest(val email: String, val username: String, val firstname: String,
-                           val lastname: String, val password: String)
+data class RegisterRequest(val username: String, val name: String,val LastName: String,
+                           val email: String, val password: String)
