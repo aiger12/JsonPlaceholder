@@ -61,8 +61,8 @@ class RegisterFragment : Fragment() {
             //TODO add conditions to password. For example, check if the length is greater than 7
             //TODO optional: check the email validity
 
-            val request = RegisterRequest(emailText, usernameText, firstnameText,
-                            lastnameText, passwordText)
+            val request = RegisterRequest(usernameText, firstnameText,
+                            lastnameText, emailText, passwordText)
 
             lifecycleScope.launch {
                 val response = try {
