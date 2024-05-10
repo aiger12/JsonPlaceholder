@@ -20,19 +20,5 @@
         android:id="@+id/registerFragment"
         android:name="kz.tutorial.jsonplaceholdertypicode.presentation.register.RegisterFragment"/>
 
-    <navigation
-        android:id="@+id/nav_second"
-        app:startDestination="@id/menu_posts">
-
-        <!-- Define destinations within nav_second here -->
-        <fragment
-            android:id="@+id/menu_posts"
-            android:name="kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragment">
-            <!-- Define actions and other configurations for menu_posts fragment -->
-        </fragment>
-
-        <!-- Define other destinations within nav_second as needed -->
-
-    </navigation>
-
+    <include app:graph="@navigation/nav_second"/>
 </navigation>
