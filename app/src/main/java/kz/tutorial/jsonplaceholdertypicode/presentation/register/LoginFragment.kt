@@ -1,5 +1,6 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
+import kz.tutorial.jsonplaceholdertypicode.presentation.SecondActivity
 
 
 /**
@@ -33,7 +35,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
@@ -58,19 +60,27 @@ class LoginFragment : Fragment() {
                     return@launch
 
 
-
                 }
 
                 if (response.isSuccessful) {
                     val token = response.body()?.token
                     if (token != null) {
                         TokenManager.saveToken(requireContext(), token)
-                        Toast.makeText(requireContext(), "Successfully logged in!", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_loginFragment_to_nav_second)
+                        Toast.makeText(
+                            requireContext(),
+                            "Successfully logged in!",
+                            Toast.LENGTH_LONG
+                        ).show()
+//                        findNavController().navigate(R.id.action_loginFragment_to_nav_second)
+                        startActivity(Intent(context,SecondActivity::class.java))
                         Log.d("LoginFragment", "Token: $token")
                     }
                 } else {
-                    Toast.makeText(requireContext(), "The username or password is incorrect. Please, try again.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "The username or password is incorrect. Please, try again.",
+                        Toast.LENGTH_LONG
+                    ).show()
                     Log.d("LoginFragment", "Error: ${response.errorBody()?.string()}")
                 }
 

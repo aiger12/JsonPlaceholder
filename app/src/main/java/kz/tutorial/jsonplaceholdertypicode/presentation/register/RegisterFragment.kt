@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -34,11 +35,10 @@ class RegisterFragment : Fragment() {
     lateinit var btnRegister: Button
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
@@ -61,8 +61,10 @@ class RegisterFragment : Fragment() {
             //TODO add conditions to password. For example, check if the length is greater than 7
             //TODO optional: check the email validity
 
-            val request = RegisterRequest(usernameText, firstnameText,
-                            lastnameText, emailText, passwordText)
+            val request = RegisterRequest(
+                emailText, usernameText, firstnameText,
+                lastnameText, passwordText
+            )
 
             lifecycleScope.launch {
                 val response = try {
@@ -74,11 +76,20 @@ class RegisterFragment : Fragment() {
 
                 if (response.isSuccessful) {
                     //TODO make a success window and  navigation to a login page
+                    Toast.makeText(
+                        requireContext(),
+                        "Successfully registered!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    findNavController().popBackStack()
+
                 } else {
                     Log.d("LoginFragment", "Error: ${response.errorBody()?.string()}")
                 }
             }
         }
+
+
     }
 
     private fun initViews(view: View) {
@@ -88,6 +99,6 @@ class RegisterFragment : Fragment() {
         lastname = view.findViewById(R.id.lastname_input)
         email = view.findViewById(R.id.email_input)
         repeatPassword = view.findViewById(R.id.repeat_password_input)
-        btnRegister =  view.findViewById(R.id.register_btn)
+        btnRegister = view.findViewById(R.id.register_btn)
     }
 }
