@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
@@ -17,7 +18,7 @@ class PostsFragment : Fragment() {
 
     private val vm: PostsViewModel by viewModel()
 
-    lateinit var rvPosts: RecyclerView
+    lateinit var rvPosts: ViewPager2
 
     lateinit var adapter: PostAdapter
 
@@ -37,7 +38,7 @@ class PostsFragment : Fragment() {
     }
 
     private fun initViews(view: View) {
-        rvPosts = view.findViewById(R.id.rv_posts)
+        rvPosts = view.findViewById(R.id.viewPagerPosts)
     }
 
     private fun initAdapter() {
@@ -51,7 +52,7 @@ class PostsFragment : Fragment() {
         val currentContext = context ?: return
 
         rvPosts.adapter = adapter
-        rvPosts.layoutManager = LinearLayoutManager(currentContext)
+//        rvPosts.layoutManager = LinearLayoutManager(currentContext)
 
         val spaceItemDecoration = SpaceItemDecoration(verticalSpaceInDp = 8, horizontalSpaceInDp = 16)
         rvPosts.addItemDecoration(spaceItemDecoration)
