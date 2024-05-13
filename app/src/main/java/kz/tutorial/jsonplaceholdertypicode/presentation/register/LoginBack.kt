@@ -1,6 +1,9 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.register
 
 import android.content.Context
+import android.os.Build
+import android.util.Log
+import java.util.Base64
 import kz.tutorial.jsonplaceholdertypicode.data.network.MainApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,4 +38,19 @@ object TokenManager {
         editor.remove(TOKEN_KEY)
         editor.apply()
     }
+    fun decodeToken(jwt: String?): String {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return "Requires SDK 26"
+        val parts = jwt?.split(".")
+        return try {
+            val charset = charset("UTF-8")
+            val header = String(Base64.getUrlDecoder().decode(parts?.get(0)?.toByteArray(charset) ?: null), charset)
+            val payload = String(Base64.getUrlDecoder().decode(parts?.get(1)?.toByteArray(charset)
+                ?: null), charset)
+            "$header"
+            "$payload"
+        } catch (e: Exception) {
+            "Error parsing JWT: $e"
+        }
+    }
+
 }

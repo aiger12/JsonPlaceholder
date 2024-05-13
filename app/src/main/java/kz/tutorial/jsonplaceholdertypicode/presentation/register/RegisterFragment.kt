@@ -75,7 +75,6 @@ class RegisterFragment : Fragment() {
                 }
 
                 if (response.isSuccessful) {
-                    //TODO make a success window and  navigation to a login page
                     Toast.makeText(
                         requireContext(),
                         "Successfully registered!",

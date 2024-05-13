@@ -28,7 +28,11 @@
     <!--    If we match the ids with the menu items, it should associate them and automatically trigger the required fragment-->
     <fragment
         android:id="@+id/add_post"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.albums.AlbumsFragment" />
+        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.add_post.AddPostFragment" >
+        <action
+            android:id="@+id/action_add_post_to_menu_posts"
+            app:destination="@id/menu_posts" />
+    </fragment>
 
     <fragment
         android:id="@+id/show_all_fragment"

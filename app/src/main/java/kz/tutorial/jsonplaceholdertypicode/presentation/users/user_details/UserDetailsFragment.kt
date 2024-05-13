@@ -78,7 +78,6 @@ class UserDetailsFragment : Fragment() {
             user?.let {
                 username_title.text = user.username
                 initInfo(user)
-                view?.findViewById<TextView>(R.id.tv_user_company_name)?.text = user.company.toString()
 //                view?.findViewById<TextView>(R.id.tv_user_address)?.text = user.address
             }
         }
@@ -88,7 +87,6 @@ class UserDetailsFragment : Fragment() {
         user_info_email.text = user.email
         user_info_name.text = user.name
         user_info_phone.text = user.phone
-        user_info_website.text = user.website
     }
 
 
