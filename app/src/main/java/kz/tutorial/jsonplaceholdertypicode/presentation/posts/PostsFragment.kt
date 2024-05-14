@@ -1,5 +1,6 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.posts
 
+import PostAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

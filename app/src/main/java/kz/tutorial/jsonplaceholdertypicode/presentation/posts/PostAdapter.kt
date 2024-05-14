@@ -1,13 +1,15 @@
-package kz.tutorial.jsonplaceholdertypicode.presentation.posts
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
+import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
+import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 
 class PostAdapter(private val layoutInflater: LayoutInflater) :
@@ -45,9 +47,16 @@ class PostAdapter(private val layoutInflater: LayoutInflater) :
 class PostViewHolder(itemView: View) : ViewHolder(itemView) {
     private var tvTitle: TextView = itemView.findViewById(R.id.tv_title)
     private var tvBody: TextView = itemView.findViewById(R.id.tv_body)
+    private var tvAuthor: TextView = itemView.findViewById(R.id.tv_author)
 
     fun bind(post: Post) {
         tvTitle.text = post.title
         tvBody.text = post.body
+//
+//        // Launch a coroutine using GlobalScope
+        GlobalScope.launch(Dispatchers.Main) {
+            val user = RetrofitClient.apiService.getUser(post.userId)
+            tvAuthor.text = user.username
+        }
     }
 }

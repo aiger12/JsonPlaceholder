@@ -19,6 +19,30 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_01" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_by"
+                style="@style/Header2"
+                android:text="By: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_01"
+                android:layout_alignBaseline="@+id/tv_author" />
+
+            <TextView
+                android:id="@+id/tv_author"
+                style="@style/Header2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/main_01"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/tv_by"/>
+        </RelativeLayout>
+
+
         <TextView
             android:id="@+id/tv_body"
             style="@style/Body1"
