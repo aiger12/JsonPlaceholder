@@ -55,7 +55,13 @@ class RegisterFragment : Fragment() {
             val repeatPasswordText = repeatPassword.text.toString()
 
             if (passwordText != repeatPasswordText) {
-                //TODO handle
+                Toast.makeText(
+                    requireContext(),
+                    "Passwords do not match",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                return@setOnClickListener
             }
 
             //TODO add conditions to password. For example, check if the length is greater than 7
