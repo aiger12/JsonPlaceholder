@@ -320,7 +320,7 @@
         android:layout_height="60dp"
         android:id="@+id/editButton"
         android:gravity="center"
-        android:text="Edit Profile"
+        android:text="Update Profile"
         android:textSize="18sp"
         app:cornerRadius = "20dp"
         app:layout_constraintBottom_toBottomOf="parent"
