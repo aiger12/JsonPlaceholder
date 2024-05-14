@@ -12,7 +12,7 @@ import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.constants.POST_ID_KEY
 import kz.tutorial.jsonplaceholdertypicode.presentation.comments.CommentsAdapter
 import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostAdapter
+
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration

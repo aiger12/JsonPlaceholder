@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostAdapter
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration

@@ -62,8 +62,8 @@ class RegisterFragment : Fragment() {
             //TODO optional: check the email validity
 
             val request = RegisterRequest(
-                emailText, usernameText, firstnameText,
-                lastnameText, passwordText
+                usernameText, firstnameText, lastnameText,
+                emailText, passwordText
             )
 
             lifecycleScope.launch {

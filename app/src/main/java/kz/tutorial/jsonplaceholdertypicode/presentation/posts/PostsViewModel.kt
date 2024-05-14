@@ -19,7 +19,7 @@ class PostsViewModel(private val getPostsUseCase: GetPostsUseCase) : ViewModel()
 
     private fun getPosts() {
         viewModelScope.launch {
-            val posts = getPostsUseCase.invoke()
+            val posts = getPostsUseCase.invoke().reversed()
             _postsLiveData.postValue(posts)
         }
     }
