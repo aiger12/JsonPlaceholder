@@ -1,6 +1,7 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.register
 
 import android.content.Intent
+import android.media.session.MediaSession.Token
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -41,6 +42,10 @@ class LoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if (TokenManager.getToken(requireContext()) != null) {
+            startActivity(Intent(context,SecondActivity::class.java))
+            return
+        }
 
         initViews(view)
         tvRegister.setOnClickListener {
