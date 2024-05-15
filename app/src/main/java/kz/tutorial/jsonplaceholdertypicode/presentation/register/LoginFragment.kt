@@ -79,6 +79,7 @@ class LoginFragment : Fragment() {
                         ).show()
 //                        findNavController().navigate(R.id.action_loginFragment_to_nav_second)
                         startActivity(Intent(context,SecondActivity::class.java))
+                        requireActivity().finish()
                         Log.d("LoginFragment", "Token: $token")
                     }
                 } else {

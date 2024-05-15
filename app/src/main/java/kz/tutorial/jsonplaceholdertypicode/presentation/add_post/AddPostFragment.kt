@@ -49,7 +49,7 @@ class AddPostFragment : Fragment(R.layout.fragment_add_post) {
                 val response = try {
                     RetrofitClient.apiService.addPost(token, addPostRequest)
                 } catch (e: Exception) {
-                    Log.d("LoginFragment", "Error: ${e.message}")
+                    Log.d("AddPostFragment", "Error: ${e.message}")
                     return@launch
                 }
 
