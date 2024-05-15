@@ -10,6 +10,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.request.EditUserRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.RegisterRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.response.LoginResponse
+import kz.tutorial.jsonplaceholdertypicode.domain.response.GetPostsResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -25,6 +26,8 @@ interface MainApi {
 
     @GET("posts/{id}")
     suspend fun getPost(@Path("id") postId: Int): Post
+    @GET("posts/user/{id}")
+    suspend fun getPostsByUserId(@Path("id") postId: Int): GetPostsResponse
 
     @GET("posts/{id}/comments")
     suspend fun getPostComments(@Path("id") postId: Int): List<Comment>
