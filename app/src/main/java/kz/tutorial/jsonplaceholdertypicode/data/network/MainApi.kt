@@ -6,6 +6,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
 import kz.tutorial.jsonplaceholdertypicode.domain.request.AddPostRequest
+import kz.tutorial.jsonplaceholdertypicode.domain.request.EditUserRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.RegisterRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.response.LoginResponse
@@ -14,6 +15,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface MainApi {
@@ -50,6 +52,13 @@ interface MainApi {
     suspend fun addPost(
         @Header("Authorization") token: String?,
         @Body request: AddPostRequest
+    ): Response<Any>
+
+    @PUT("users/edit_profile")
+    suspend fun editUser(
+        @Header("Authorization") token: String?,
+        @Body request: EditUserRequest
+
     ): Response<Any>
 
 }

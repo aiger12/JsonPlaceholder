@@ -42,6 +42,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        TokenManager.clearToken(requireContext())
         if (TokenManager.getToken(requireContext()) != null) {
             startActivity(Intent(context,SecondActivity::class.java))
             return
