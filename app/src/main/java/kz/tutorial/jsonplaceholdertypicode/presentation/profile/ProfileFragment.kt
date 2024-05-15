@@ -41,35 +41,21 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         initViews(view)
-        var token = TokenManager.getToken(requireContext())
-        val userId = JSONObject(TokenManager.decodeToken(token)).getString("username").toInt()
-        lifecycleScope.launch {
-            val response = try {
-                val user = RetrofitClient.apiService.getUser(userId)
-                username.text = user.username
-                name.text = user.name
-                changeUsername.setText(user.username)
-                changeName.setText(user.name)
-                changeLastname.setText(user.LastName)
-                changeEmail.setText(user.email)
-            } catch (e: Exception) {
-                Log.d("ProfileFragment", "Error: ${e.message}")
-                return@launch
-            }
-        }
+        val token = TokenManager.getToken(requireContext())
+        setValues(token)
 
-        token = "Bearer $token"
+        val request_token = "Bearer $token"
         btnEditProfile.setOnClickListener{
-            val request = EditUserRequest(username.text.toString(),
+            val request = EditUserRequest(changeUsername.text.toString(),
                 oldPassword.text.toString(), changePassword.text.toString(),
                 changeName.text.toString(), changeLastname.text.toString(),
                 changeEmail.text.toString())
             Log.d("edit profile request - ", request.toString())
-            Log.d("token: - ", token)
+            Log.d("token: - ", request_token)
 
             lifecycleScope.launch {
                 val response = try {
-                    RetrofitClient.apiService.editUser(token, request)
+                    RetrofitClient.apiService.editUser(request_token, request)
                 } catch (e: Exception) {
                     Log.d("ProfileFragment", "Error: ${e.message}")
                     return@launch
@@ -80,6 +66,7 @@ class ProfileFragment : Fragment() {
                         "Successfully edited profile!",
                         Toast.LENGTH_LONG
                     ).show()
+                    setValues(token)
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -105,5 +92,23 @@ class ProfileFragment : Fragment() {
         btnEditProfile = view.findViewById(R.id.profileButton)
     }
 
-
+    private fun setValues(token: String?){
+        changePassword.setText("")
+        oldPassword.setText("")
+        val userId = JSONObject(TokenManager.decodeToken(token)).getString("username").toInt()
+        lifecycleScope.launch {
+            val response = try {
+                val user = RetrofitClient.apiService.getUser(userId)
+                username.text = user.username
+                name.text = user.name
+                changeUsername.setText(user.username)
+                changeName.setText(user.name)
+                changeLastname.setText(user.LastName)
+                changeEmail.setText(user.email)
+            } catch (e: Exception) {
+                Log.d("ProfileFragment", "Error: ${e.message}")
+                return@launch
+            }
+        }
+    }
 }
