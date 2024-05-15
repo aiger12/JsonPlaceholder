@@ -24,6 +24,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         initViews(view)
         val token = TokenManager.getToken(requireContext())
