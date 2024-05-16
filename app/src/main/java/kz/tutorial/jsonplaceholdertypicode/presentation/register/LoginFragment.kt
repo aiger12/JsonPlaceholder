@@ -45,6 +45,7 @@ class LoginFragment : Fragment() {
 //        TokenManager.clearToken(requireContext())
         if (TokenManager.getToken(requireContext()) != null) {
             startActivity(Intent(context,SecondActivity::class.java))
+            requireActivity().finish()
             return
         }
 
