@@ -26,7 +26,7 @@
             <TextView
                 android:id="@+id/tv_by"
                 style="@style/Header2"
-                android:text="By: "
+                android:text="Author: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_01"
@@ -42,6 +42,14 @@
                 android:layout_toEndOf="@id/tv_by"/>
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/tv_date"
+            android:text="2 weeks ago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/text_01" />
 
         <TextView
             android:id="@+id/tv_body"
