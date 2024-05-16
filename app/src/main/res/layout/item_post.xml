@@ -29,10 +29,10 @@
             <TextView
                 android:id="@+id/tv_by"
                 style="@style/Header2"
+                android:text="Author: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/tv_author"
-                android:text="By: "
                 android:textColor="@color/text_01" />
 
             <TextView
@@ -40,11 +40,19 @@
                 style="@style/Header2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/main_01"
                 android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/tv_by"
-                android:textColor="@color/main_01" />
+                android:layout_toEndOf="@id/tv_by"/>
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/tv_date"
+            android:text="2 weeks ago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/text_01" />
 
         <RelativeLayout
             android:id="@+id/main_part"
