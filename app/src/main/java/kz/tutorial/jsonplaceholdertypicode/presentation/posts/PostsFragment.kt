@@ -55,7 +55,7 @@ class PostsFragment : Fragment() {
         rvPosts.adapter = adapter
 //        rvPosts.layoutManager = LinearLayoutManager(currentContext)
 
-        val spaceItemDecoration = SpaceItemDecoration(verticalSpaceInDp = 8, horizontalSpaceInDp = 16)
+        val spaceItemDecoration = SpaceItemDecoration(verticalSpaceInDp = 8, horizontalSpaceInDp = 8)
         rvPosts.addItemDecoration(spaceItemDecoration)
     }
 
