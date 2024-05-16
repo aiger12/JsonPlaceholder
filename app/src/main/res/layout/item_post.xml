@@ -86,14 +86,14 @@
                     android:layout_gravity="end"
                     android:layout_marginTop="5dp"
                     android:padding="2dp"
-                    android:src="@drawable/heart_icon_liked" />
+                    android:src="@drawable/heart_icon_unliked" />
 
                 <TextView
                     android:id="@+id/like_count"
                     android:layout_width="wrap_content"
                     android:layout_height="16dp"
                     android:layout_centerInParent="true"
-                    android:text="100K"
+                    android:text=""
                     android:textStyle="bold"
                     android:textColor="@color/main_01"/>
 
