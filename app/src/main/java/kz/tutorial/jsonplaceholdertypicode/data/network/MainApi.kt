@@ -9,6 +9,8 @@ import kz.tutorial.jsonplaceholdertypicode.domain.request.AddPostRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.EditUserRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.RegisterRequest
+import kz.tutorial.jsonplaceholdertypicode.domain.response.GetPostLikedResponse
+import kz.tutorial.jsonplaceholdertypicode.domain.response.GetPostLikesResponse
 import kz.tutorial.jsonplaceholdertypicode.domain.response.LoginResponse
 import kz.tutorial.jsonplaceholdertypicode.domain.response.GetPostsResponse
 import retrofit2.Response
@@ -31,6 +33,12 @@ interface MainApi {
 
     @GET("posts/{id}/comments")
     suspend fun getPostComments(@Path("id") postId: Int): List<Comment>
+    @GET("posts/{id}/like_count")
+    suspend fun getPostLikes(@Path("id") postId: Int): GetPostLikesResponse
+
+    @GET("posts/{id}/liked")
+    suspend fun getPostLiked(@Path("id") postId: Int,
+                             @Header("Authorization") token: String?): GetPostLikedResponse
 
     @GET("users/{id}")
     suspend fun getUser(@Path("id") userId: Int): User
@@ -56,6 +64,16 @@ interface MainApi {
         @Header("Authorization") token: String?,
         @Body request: AddPostRequest
     ): Response<Any>
+    @POST("posts/{id}/like")
+    suspend fun likePost(
+        @Path("id") postId: Int,
+        @Header("Authorization") token: String?
+    ) : Response<Any>
+    @POST("posts/{id}/unlike")
+    suspend fun unlikePost(
+        @Path("id") postId: Int,
+        @Header("Authorization") token: String?
+    ) : Response<Any>
 
     @PUT("users/edit_profile")
     suspend fun editUser(

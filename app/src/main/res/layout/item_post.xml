@@ -86,9 +86,10 @@
                     android:layout_gravity="end"
                     android:layout_marginTop="5dp"
                     android:padding="2dp"
-                    android:src="@drawable/heart_icon" />
+                    android:src="@drawable/heart_icon_liked" />
 
                 <TextView
+                    android:id="@+id/like_count"
                     android:layout_width="wrap_content"
                     android:layout_height="16dp"
                     android:layout_centerInParent="true"
