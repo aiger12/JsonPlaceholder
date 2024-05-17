@@ -43,7 +43,8 @@ class PostsFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        adapter = PostAdapter(layoutInflater, requireContext())
+        adapter = PostAdapter(layoutInflater, requireContext(), findNavController())
+
         adapter.listener = ClickListener {
             findNavController().navigate(PostsFragmentDirections.toPostDetails(it.id))
         }

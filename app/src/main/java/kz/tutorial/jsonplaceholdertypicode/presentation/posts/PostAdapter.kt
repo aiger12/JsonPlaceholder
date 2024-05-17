@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +17,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
+import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragment
+import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragmentDirections
+import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.TokenManager
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
@@ -22,7 +28,8 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class PostAdapter(private val layoutInflater: LayoutInflater,  private val contextProvider: Context) :
+class PostAdapter(private val layoutInflater: LayoutInflater,  private val contextProvider: Context,
+                  private val navController: NavController) :
     RecyclerView.Adapter<PostViewHolder>() {
 
     private val posts: MutableList<Post> = mutableListOf()
@@ -31,7 +38,7 @@ class PostAdapter(private val layoutInflater: LayoutInflater,  private val conte
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = layoutInflater.inflate(R.layout.item_post, parent, false)
 
-        return PostViewHolder(view, contextProvider)
+        return PostViewHolder(view, contextProvider, navController)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -55,27 +62,27 @@ class PostAdapter(private val layoutInflater: LayoutInflater,  private val conte
     }
 }
 
-class PostViewHolder(itemView: View,  private val contextProvider: Context) : ViewHolder(itemView) {
+class PostViewHolder(itemView: View,  private val contextProvider: Context,
+                     private val navController: NavController) : ViewHolder(itemView) {
     private var tvTitle: TextView = itemView.findViewById(R.id.tv_title)
     private var tvBody: TextView = itemView.findViewById(R.id.tv_body)
     private var tvAuthor: TextView = itemView.findViewById(R.id.tv_author)
     private var tvDate: TextView = itemView.findViewById(R.id.tv_date)
     private var tvLikeCount: TextView = itemView.findViewById(R.id.like_count)
+    private var tvCommentCount: TextView = itemView.findViewById(R.id.comment_count)
     private var ivFavourite: ImageView = itemView.findViewById(R.id.favorite)
+    private var ivComment: ImageView = itemView.findViewById(R.id.iv_comment)
     private var isLiked : Boolean = false
 
+
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun formatPostCreationTime(creationTime: String): String {
-        // Parse the creation time string into a LocalDateTime object
+    fun formatPostCreationTime(creationTime: String): String {
         val postCreationDateTime = ZonedDateTime.parse(creationTime).withZoneSameInstant(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of("UTC+5")).toLocalDateTime()
 
-        // Get the current time
         val currentTime = LocalDateTime.now(ZoneId.of("UTC+5"))
 
-        // Calculate the duration between post creation time and current time
         val duration = Duration.between(postCreationDateTime, currentTime)
 
-        // Determine the appropriate unit and format the output
         return when {
             duration.toDays() >= 365 -> {
                 val years = duration.toDays() / 365
@@ -102,7 +109,6 @@ class PostViewHolder(itemView: View,  private val contextProvider: Context) : Vi
                 if (minutes > 1) "$minutes minutes ago" else "1 minute ago"
             }
             else -> "Just now"
-
         }
     }
 
@@ -119,6 +125,7 @@ class PostViewHolder(itemView: View,  private val contextProvider: Context) : Vi
             val user = RetrofitClient.apiService.getUser(post.userId)
             tvAuthor.text = user.username
             tvLikeCount.text = RetrofitClient.apiService.getPostLikes(post.id).data.toString()
+            tvCommentCount.text = RetrofitClient.apiService.getPostComments(post.id).size.toString()
             isLiked = RetrofitClient.apiService.getPostLiked(post.id, tokenRequest).data
             if (isLiked)
                 ivFavourite.setImageResource(R.drawable.heart_icon_liked)
@@ -154,6 +161,9 @@ class PostViewHolder(itemView: View,  private val contextProvider: Context) : Vi
             }
         }
 
-
+        ivComment.setOnClickListener {
+            navController.navigate(PostsFragmentDirections.toPostDetails(post.id))
+            navController.navigate(PostDetailsFragmentDirections.actionPostDetailsToShowAllFragment(post.id))
+        }
     }
 }

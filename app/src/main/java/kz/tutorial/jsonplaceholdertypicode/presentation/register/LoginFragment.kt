@@ -65,8 +65,6 @@ class LoginFragment : Fragment() {
                 } catch (e: Exception) {
                     Log.d("LoginFragment", "Error: ${e.message}")
                     return@launch
-
-
                 }
 
                 if (response.isSuccessful) {

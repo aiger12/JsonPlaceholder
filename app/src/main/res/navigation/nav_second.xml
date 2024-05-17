@@ -10,6 +10,9 @@
         <action
             android:id="@+id/to_post_details"
             app:destination="@+id/post_details" />
+        <action
+            android:id="@+id/action_menu_posts_to_show_all_fragment"
+            app:destination="@id/show_all_fragment" />
     </fragment>
 
 

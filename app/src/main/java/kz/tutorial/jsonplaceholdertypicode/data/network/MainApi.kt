@@ -5,6 +5,7 @@ import kz.tutorial.jsonplaceholdertypicode.data.entity.PhotoRemote
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.User
+import kz.tutorial.jsonplaceholdertypicode.domain.request.AddCommentRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.AddPostRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.EditUserRequest
 import kz.tutorial.jsonplaceholdertypicode.domain.request.LoginRequest
@@ -74,6 +75,10 @@ interface MainApi {
         @Path("id") postId: Int,
         @Header("Authorization") token: String?
     ) : Response<Any>
+
+    @POST("comments/add")
+    suspend fun addComment(@Header("Authorization") token: String?,
+                           @Body request: AddCommentRequest): Response<Any>
 
     @PUT("users/edit_profile")
     suspend fun editUser(
