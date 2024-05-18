@@ -45,8 +45,8 @@ class PostDetailsFragment : Fragment() {
     lateinit var tvAuthor: TextView
     lateinit var tvBody: TextView
     lateinit var tvShowAll: TextView
-    lateinit var etAddComment: EditText
-    lateinit var btnAddComment: Button
+//    lateinit var etAddComment: EditText
+//    lateinit var btnAddComment: Button
     lateinit var tvDate: TextView
 
     lateinit var commentsAdapter: CommentsAdapter
@@ -73,44 +73,44 @@ class PostDetailsFragment : Fragment() {
             findNavController().navigate(PostDetailsFragmentDirections.actionPostDetailsToShowAllFragment(postId))
         }
 
-        btnAddComment.setOnClickListener {
-            val content = etAddComment.text.toString()
-            if (content.length == 0) {
-                Toast.makeText(
-                    requireContext(),
-                    "Comment must not be an empty!",
-                    Toast.LENGTH_LONG
-                ).show()
-
-                return@setOnClickListener
-            }
-
-            val postId = arguments?.getInt(POST_ID_KEY)
-            val token = TokenManager.getToken(requireContext())
-            val tokenRequest = "Bearer $token"
-
-            val request = AddCommentRequest(content, postId)
-
-            lifecycleScope.launch {
-                val response = try {
-                    RetrofitClient.apiService.addComment(tokenRequest, request)
-                } catch (e: Exception) {
-                    Log.d("PostDetailsFragment", "Error: ${e.message}")
-                    return@launch
-                }
-                if (response.isSuccessful) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Successfully added a comment!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    findNavController().popBackStack()
-                    findNavController().navigate(PostsFragmentDirections.toPostDetails(postId!!))
-                } else {
-                    Log.d("PostDetailsFragment", "Error: ${response.errorBody()?.string()}")
-                }
-            }
-        }
+//        btnAddComment.setOnClickListener {
+//            val content = etAddComment.text.toString()
+//            if (content.length == 0) {
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Comment must not be an empty!",
+//                    Toast.LENGTH_LONG
+//                ).show()
+//
+//                return@setOnClickListener
+//            }
+//
+//            val postId = arguments?.getInt(POST_ID_KEY)
+//            val token = TokenManager.getToken(requireContext())
+//            val tokenRequest = "Bearer $token"
+//
+//            val request = AddCommentRequest(content, postId)
+//
+//            lifecycleScope.launch {
+//                val response = try {
+//                    RetrofitClient.apiService.addComment(tokenRequest, request)
+//                } catch (e: Exception) {
+//                    Log.d("PostDetailsFragment", "Error: ${e.message}")
+//                    return@launch
+//                }
+//                if (response.isSuccessful) {
+//                    Toast.makeText(
+//                        requireContext(),
+//                        "Successfully added a comment!",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//                    findNavController().popBackStack()
+//                    findNavController().navigate(PostsFragmentDirections.toPostDetails(postId!!))
+//                } else {
+//                    Log.d("PostDetailsFragment", "Error: ${response.errorBody()?.string()}")
+//                }
+//            }
+//        }
     }
 
     private fun initViews(view: View) {
@@ -119,8 +119,8 @@ class PostDetailsFragment : Fragment() {
         tvAuthor = view.findViewById(R.id.tv_author)
         tvBody = view.findViewById(R.id.tv_body)
         tvShowAll = view.findViewById(R.id.tv_show_all)
-        etAddComment = view.findViewById(R.id.et_add_comment)
-        btnAddComment = view.findViewById(R.id.add_comment_btn)
+//        etAddComment = view.findViewById(R.id.et_add_comment)
+//        btnAddComment = view.findViewById(R.id.add_comment_btn)
         tvDate = view.findViewById(R.id.tv_date)
     }
 

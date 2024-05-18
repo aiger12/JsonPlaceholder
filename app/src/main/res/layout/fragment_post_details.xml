@@ -79,7 +79,7 @@
                     android:layout_weight="1"
                     android:textColor="@color/text_01"
                     style="@style/Header2"
-                    android:text="@string/comments" />
+                    android:text="@string/last_comments" />
 
                 <TextView
                     android:id="@+id/tv_show_all"
@@ -100,37 +100,37 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:id="@+id/commentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/commentLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:orientation="horizontal">-->
 
-        <EditText
-            android:id="@+id/et_add_comment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Add a comment"
-            android:maxHeight="130dp"
-            android:textColorHint="@color/text_02"
-            android:textColor="@color/text_01"
-            android:padding="16dp"
-            android:textSize="10pt"
-            android:layout_margin="8dp"
-            android:background="@drawable/rounded_corner_comment"
-            />
+<!--        <EditText-->
+<!--            android:id="@+id/et_add_comment"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:hint="Add a comment"-->
+<!--            android:maxHeight="130dp"-->
+<!--            android:textColorHint="@color/text_02"-->
+<!--            android:textColor="@color/text_01"-->
+<!--            android:padding="16dp"-->
+<!--            android:textSize="10pt"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:background="@drawable/rounded_corner_comment"-->
+<!--            />-->
 
-        <Button
-            android:id="@+id/add_comment_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Post"
-            android:textSize="10pt"
-            android:layout_margin="8dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/add_comment_btn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Post"-->
+<!--            android:textSize="10pt"-->
+<!--            android:layout_margin="8dp"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
 </RelativeLayout>
