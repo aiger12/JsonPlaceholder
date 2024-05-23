@@ -47,9 +47,6 @@ class UsersFragment : Fragment() {
         usersAdapter = UsersAdapter(layoutInflater) { email ->
             context?.openEmailWithAddress(email)
         }
-        usersAdapter.listener = ClickListener {
-            NavHostFragment.findNavController(this).navigate(UsersFragmentDirections.usersToUserDetails(it.id))
-        }
     }
 
     private fun initRecycler() {
