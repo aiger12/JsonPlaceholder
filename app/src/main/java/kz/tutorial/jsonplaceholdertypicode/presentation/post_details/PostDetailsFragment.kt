@@ -1,28 +1,21 @@
 package kz.tutorial.jsonplaceholdertypicode.presentation.post_details
 
+import PostAdapter
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.constants.POST_ID_KEY
-import kz.tutorial.jsonplaceholdertypicode.domain.request.AddCommentRequest
 import kz.tutorial.jsonplaceholdertypicode.presentation.comments.CommentsAdapter
-import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.TokenManager
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
@@ -32,6 +25,9 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import kotlinx.coroutines.launch
+import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 
 
 class PostDetailsFragment : Fragment() {
@@ -45,10 +41,8 @@ class PostDetailsFragment : Fragment() {
     lateinit var tvAuthor: TextView
     lateinit var tvBody: TextView
     lateinit var tvShowAll: TextView
-//    lateinit var etAddComment: EditText
-//    lateinit var btnAddComment: Button
     lateinit var tvDate: TextView
-
+    lateinit var adapter: PostAdapter
     lateinit var commentsAdapter: CommentsAdapter
 
 
@@ -72,45 +66,19 @@ class PostDetailsFragment : Fragment() {
             if (postId == null) return@setOnClickListener
             findNavController().navigate(PostDetailsFragmentDirections.actionPostDetailsToShowAllFragment(postId))
         }
+        adapter = PostAdapter(layoutInflater, requireContext(), findNavController())
 
-//        btnAddComment.setOnClickListener {
-//            val content = etAddComment.text.toString()
-//            if (content.length == 0) {
-//                Toast.makeText(
-//                    requireContext(),
-//                    "Comment must not be an empty!",
-//                    Toast.LENGTH_LONG
-//                ).show()
-//
-//                return@setOnClickListener
-//            }
-//
-//            val postId = arguments?.getInt(POST_ID_KEY)
-//            val token = TokenManager.getToken(requireContext())
-//            val tokenRequest = "Bearer $token"
-//
-//            val request = AddCommentRequest(content, postId)
-//
-//            lifecycleScope.launch {
-//                val response = try {
-//                    RetrofitClient.apiService.addComment(tokenRequest, request)
-//                } catch (e: Exception) {
-//                    Log.d("PostDetailsFragment", "Error: ${e.message}")
-//                    return@launch
-//                }
-//                if (response.isSuccessful) {
-//                    Toast.makeText(
-//                        requireContext(),
-//                        "Successfully added a comment!",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                    findNavController().popBackStack()
-//                    findNavController().navigate(PostsFragmentDirections.toPostDetails(postId!!))
-//                } else {
-//                    Log.d("PostDetailsFragment", "Error: ${response.errorBody()?.string()}")
-//                }
-//            }
-//        }
+        tvAuthor.setOnClickListener {
+            val postId = arguments?.getInt(POST_ID_KEY)
+            if (postId == null) return@setOnClickListener
+
+            lifecycleScope.launch{
+                var userId = RetrofitClient.apiService.getPost(postId).userId
+                findNavController().navigate(PostDetailsFragmentDirections.actionPostDetailsToUserProfileFragment(userId))
+            }
+        }
+
+
     }
 
     private fun initViews(view: View) {
@@ -119,8 +87,6 @@ class PostDetailsFragment : Fragment() {
         tvAuthor = view.findViewById(R.id.tv_author)
         tvBody = view.findViewById(R.id.tv_body)
         tvShowAll = view.findViewById(R.id.tv_show_all)
-//        etAddComment = view.findViewById(R.id.et_add_comment)
-//        btnAddComment = view.findViewById(R.id.add_comment_btn)
         tvDate = view.findViewById(R.id.tv_date)
     }
 
@@ -166,6 +132,7 @@ class PostDetailsFragment : Fragment() {
         commentsAdapter = CommentsAdapter(layoutInflater) { email ->
             context?.openEmailWithAddress(email)
         }
+        adapter = PostAdapter(layoutInflater, requireContext(), findNavController())
     }
 
     private fun initRecycler() {

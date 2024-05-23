@@ -29,10 +29,10 @@
             <TextView
                 android:id="@+id/tv_by"
                 style="@style/Header2"
-                android:text="Author: "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/tv_author"
+                android:text="Author: "
                 android:textColor="@color/text_01" />
 
             <TextView
@@ -40,19 +40,19 @@
                 style="@style/Header2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/main_01"
                 android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/tv_by"/>
+                android:layout_toEndOf="@id/tv_by"
+                android:textColor="@color/main_01" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_date"
-            android:text="2 weeks ago"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:textColor="@color/text_01" />
+            android:text="2 weeks ago"
+            android:textColor="@color/text_01"
+            android:textSize="16sp" />
 
         <RelativeLayout
             android:id="@+id/main_part"
@@ -94,17 +94,17 @@
                     android:layout_height="16dp"
                     android:layout_centerInParent="true"
                     android:text=""
-                    android:textStyle="bold"
-                    android:textColor="@color/main_01"/>
+                    android:textColor="@color/main_01"
+                    android:textStyle="bold" />
 
 
                 <ImageView
+                    android:id="@+id/iv_comment"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="end"
                     android:layout_marginTop="5dp"
                     android:padding="2dp"
-                    android:id="@+id/iv_comment"
                     android:src="@drawable/icon_share" />
 
                 <TextView
@@ -113,8 +113,26 @@
                     android:layout_height="16dp"
                     android:layout_centerInParent="true"
                     android:text=""
-                    android:textStyle="bold"
-                    android:textColor="@color/main_01"/>
+                    android:textColor="@color/main_01"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_views"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:padding="2dp"
+                    android:src="@drawable/eye" />
+
+                <TextView
+                    android:id="@+id/views_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_centerInParent="true"
+                    android:text=""
+                    android:textColor="@color/main_01"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </RelativeLayout>

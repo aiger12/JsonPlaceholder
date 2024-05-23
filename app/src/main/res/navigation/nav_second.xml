@@ -26,12 +26,16 @@
         <action
             android:id="@+id/action_post_details_to_showAllFragment"
             app:destination="@id/show_all_fragment" />
+        <action
+            android:id="@+id/action_post_details_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+
     </fragment>
 
     <!--    If we match the ids with the menu items, it should associate them and automatically trigger the required fragment-->
     <fragment
         android:id="@+id/add_post"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.add_post.AddPostFragment" >
+        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.add_post.AddPostFragment">
         <action
             android:id="@+id/action_add_post_to_menu_posts"
             app:destination="@id/menu_posts" />
@@ -69,5 +73,13 @@
         android:id="@+id/menu_profile"
         android:name="kz.tutorial.jsonplaceholdertypicode.presentation.profile.ProfileFragment" />
 
-
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="kz.tutorial.jsonplaceholdertypicode.UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile">
+        <argument
+            android:name="user_id"
+            app:argType="integer"
+            app:nullable="false" />
+    </fragment>
 </navigation>
