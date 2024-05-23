@@ -8,8 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +15,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
-import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragment
 import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
@@ -28,16 +25,17 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class PostAdapter(private val layoutInflater: LayoutInflater,  private val contextProvider: Context,
-                  private val navController: NavController) :
-    RecyclerView.Adapter<PostViewHolder>() {
+class PostAdapter(
+    private val layoutInflater: LayoutInflater,
+    private val contextProvider: Context,
+    private val navController: NavController
+) : RecyclerView.Adapter<PostViewHolder>() {
 
     private val posts: MutableList<Post> = mutableListOf()
     var listener: ClickListener<Post>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = layoutInflater.inflate(R.layout.item_post, parent, false)
-
         return PostViewHolder(view, contextProvider, navController)
     }
 
@@ -55,10 +53,9 @@ class PostAdapter(private val layoutInflater: LayoutInflater,  private val conte
     }
 
     fun setData(newData: List<Post>) {
-        notifyItemRangeRemoved(0, posts.size)
         posts.clear()
         posts.addAll(newData)
-        notifyItemRangeInserted(0, posts.size)
+        notifyDataSetChanged()
     }
 }
 
