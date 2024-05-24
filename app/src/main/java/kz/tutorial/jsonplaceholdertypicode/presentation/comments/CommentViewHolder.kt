@@ -6,13 +6,19 @@ import android.view.View
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
+import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragment
+import kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragmentDirections
+import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
+import kz.tutorial.jsonplaceholdertypicode.presentation.show_all_comments.ShowAllFragment
+import kz.tutorial.jsonplaceholdertypicode.presentation.show_all_comments.ShowAllFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.EmailClickListener
 import java.time.Duration
 import java.time.LocalDateTime
@@ -21,7 +27,8 @@ import java.time.ZonedDateTime
 
 class CommentViewHolder(
     itemView: View,
-    private val emailClickListener: EmailClickListener
+    private val navController: NavController,
+    private val isShowAll : Boolean
 ) : ViewHolder(itemView) {
     private val tvCommentName: TextView = itemView.findViewById(R.id.tv_comment_name)
     private val tvBody: TextView = itemView.findViewById(R.id.tv_body)
@@ -29,17 +36,13 @@ class CommentViewHolder(
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatPostCreationTime(creationTime: String): String {
-        // Parse the creation time string into a LocalDateTime object
         val postCreationDateTime = ZonedDateTime.parse(creationTime).withZoneSameInstant(ZoneId.of("UTC")).withZoneSameInstant(
             ZoneId.of("UTC+5")).toLocalDateTime()
 
-        // Get the current time
         val currentTime = LocalDateTime.now(ZoneId.of("UTC+5"))
 
-        // Calculate the duration between post creation time and current time
         val duration = Duration.between(postCreationDateTime, currentTime)
 
-        // Determine the appropriate unit and format the output
         return when {
             duration.toDays() >= 365 -> {
                 val years = duration.toDays() / 365
@@ -75,6 +78,13 @@ class CommentViewHolder(
         GlobalScope.launch(Dispatchers.Main) {
             val user = RetrofitClient.apiService.getUser(comment.userId)
             tvCommentName.text = user.username
+        }
+        tvCommentName.setOnClickListener{
+            if (isShowAll)
+                navController.navigate(ShowAllFragmentDirections.actionShowAllFragmentToUserProfileFragment(comment.userId))
+            else
+                navController.navigate(PostDetailsFragmentDirections.actionPostDetailsToUserProfileFragment(comment.userId))
+
         }
 
         tvCommentDate.text = formatPostCreationTime(comment.createdAt)

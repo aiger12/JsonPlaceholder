@@ -21,7 +21,7 @@
             style="@style/Header2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_01"
+            android:textColor="@color/links"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

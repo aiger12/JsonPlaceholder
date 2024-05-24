@@ -75,12 +75,8 @@ class PostDetailsFragment : Fragment() {
             if (postId == null) return@setOnClickListener
 
             lifecycleScope.launch {
-                var userId = RetrofitClient.apiService.getPost(postId).userId
-                findNavController().navigate(
-                    PostDetailsFragmentDirections.actionPostDetailsToUserProfileFragment(
-                        userId
-                    )
-                )
+                val userId = RetrofitClient.apiService.getPost(postId).userId
+                findNavController().navigate(PostDetailsFragmentDirections.actionPostDetailsToUserProfileFragment(userId))
             }
         }
 
@@ -144,9 +140,7 @@ class PostDetailsFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        commentsAdapter = CommentsAdapter(layoutInflater) { email ->
-            context?.openEmailWithAddress(email)
-        }
+        commentsAdapter = CommentsAdapter(layoutInflater, findNavController(), false)
         adapter = PostAdapter(layoutInflater, requireContext(), findNavController())
     }
 

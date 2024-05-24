@@ -102,10 +102,7 @@ class ShowAllFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        commentsAdapter = CommentsAdapter(layoutInflater) { email ->
-            context?.openEmailWithAddress(email)
-        }
-
+        commentsAdapter = CommentsAdapter(layoutInflater, findNavController(), true)
     }
 
     private fun initRecycler() {

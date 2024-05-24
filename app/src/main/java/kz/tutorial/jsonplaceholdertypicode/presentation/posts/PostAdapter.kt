@@ -130,6 +130,10 @@ class PostViewHolder(itemView: View,  private val contextProvider: Context,
                 ivFavourite.setImageResource(R.drawable.heart_icon_unliked)
         }
 
+        tvAuthor.setOnClickListener {
+            navController.navigate(PostsFragmentDirections.actionMenuPostsToUserProfileFragment(post.userId))
+        }
+
         ivFavourite.setOnClickListener{
             if (!isLiked) {
                 GlobalScope.launch(Dispatchers.Main) {
