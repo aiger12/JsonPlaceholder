@@ -69,6 +69,7 @@ class PostViewHolder(itemView: View,  private val contextProvider: Context,
     private var tvCommentCount: TextView = itemView.findViewById(R.id.comment_count)
     private var ivFavourite: ImageView = itemView.findViewById(R.id.favorite)
     private var ivComment: ImageView = itemView.findViewById(R.id.iv_comment)
+    private var tvViewCount: TextView = itemView.findViewById(R.id.views_count)
     private var isLiked : Boolean = false
 
 
@@ -114,16 +115,25 @@ class PostViewHolder(itemView: View,  private val contextProvider: Context,
         tvTitle.text = post.title
         tvBody.text = post.body
         tvDate.text = formatPostCreationTime(post.createdAt)
+        tvViewCount.setText(post.ViewCount.toString())
 
         val token = TokenManager.getToken(contextProvider)
         val tokenRequest = "Bearer $token"
 
+
         GlobalScope.launch(Dispatchers.Main) {
-            val user = RetrofitClient.apiService.getUser(post.userId)
-            tvAuthor.text = user.username
-            tvLikeCount.text = RetrofitClient.apiService.getPostLikes(post.id).data.toString()
-            tvCommentCount.text = RetrofitClient.apiService.getPostComments(post.id).size.toString()
-            isLiked = RetrofitClient.apiService.getPostLiked(post.id, tokenRequest).data
+            try {
+                val user = RetrofitClient.apiService.getUser(post.userId)
+                tvAuthor.text = user.username
+                tvLikeCount.text = RetrofitClient.apiService.getPostLikes(post.id).data.toString()
+                tvCommentCount.text = RetrofitClient.apiService.getPostComments(post.id).size.toString()
+                isLiked = RetrofitClient.apiService.getPostLiked(post.id, tokenRequest).data
+                RetrofitClient.apiService.addViewPost(post.id, tokenRequest)
+            } catch (e: Exception) {
+                Log.d("PostAdapter", "Error: ${e.message}")
+            }
+
+
             if (isLiked)
                 ivFavourite.setImageResource(R.drawable.heart_icon_liked)
             else

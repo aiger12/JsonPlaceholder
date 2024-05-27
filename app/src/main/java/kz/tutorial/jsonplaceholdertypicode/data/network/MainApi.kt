@@ -87,6 +87,12 @@ interface MainApi {
         @Header("Authorization") token: String?
     ) : Response<Any>
 
+    @POST("posts/{id}/add_view")
+    suspend fun addViewPost(
+        @Path("id") postId: Int,
+        @Header("Authorization") token: String?
+    ) : Response<Any>
+
     @POST("comments/add")
     suspend fun addComment(@Header("Authorization") token: String?,
                            @Body request: AddCommentRequest): Response<Any>

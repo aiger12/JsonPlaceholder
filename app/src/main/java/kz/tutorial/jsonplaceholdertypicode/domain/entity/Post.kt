@@ -9,5 +9,6 @@ data class Post(
     val id: Int,
     val title: String,
     val userId: Int,
-    val createdAt: String
+    val createdAt: String,
+    val ViewCount: Int,
 ) : Parcelable
