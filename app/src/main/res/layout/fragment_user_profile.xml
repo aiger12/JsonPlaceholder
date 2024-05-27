@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/profilebkg">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -165,17 +165,23 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/logoutButton"
+                android:id="@+id/subscribeButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="Subscribe"
+                android:textColor="@color/text_01"
                 android:textSize="18sp"
-                app:cornerRadius="20dp"
+                app:backgroundTint="@color/cardview_light_background"
+                app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/linearLayout" />
+                app:layout_constraintStart_toStartOf="@id/linearLayout"
+                app:strokeColor="@color/main_01"
+                app:strokeWidth="2dp" />
+
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView

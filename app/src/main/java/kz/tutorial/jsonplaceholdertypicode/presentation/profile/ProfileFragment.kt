@@ -12,13 +12,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Post
 import kz.tutorial.jsonplaceholdertypicode.domain.request.EditUserRequest
 import kz.tutorial.jsonplaceholdertypicode.presentation.MainActivity
-import kz.tutorial.jsonplaceholdertypicode.presentation.SecondActivity
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
 import kz.tutorial.jsonplaceholdertypicode.presentation.register.TokenManager
 import org.json.JSONObject
@@ -112,7 +110,7 @@ class ProfileFragment : Fragment() {
         changePassword = view.findViewById(R.id.profilePassword)
         oldPassword = view.findViewById(R.id.profileOldPassword)
         btnEditProfile = view.findViewById(R.id.profileButton)
-        btnLogout = view.findViewById(R.id.logoutButton)
+        btnLogout = view.findViewById(R.id.subscribeButton)
         postCount = view.findViewById(R.id.postsNumber)
     }
 

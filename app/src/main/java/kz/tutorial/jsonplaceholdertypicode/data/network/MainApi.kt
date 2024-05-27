@@ -1,5 +1,6 @@
 package kz.tutorial.jsonplaceholdertypicode.data.network
 
+import GetSubResponse
 import kz.tutorial.jsonplaceholdertypicode.data.entity.AlbumRemote
 import kz.tutorial.jsonplaceholdertypicode.data.entity.PhotoRemote
 import kz.tutorial.jsonplaceholdertypicode.domain.entity.Comment
@@ -14,6 +15,7 @@ import kz.tutorial.jsonplaceholdertypicode.domain.response.GetPostLikedResponse
 import kz.tutorial.jsonplaceholdertypicode.domain.response.GetPostLikesResponse
 import kz.tutorial.jsonplaceholdertypicode.domain.response.LoginResponse
 import kz.tutorial.jsonplaceholdertypicode.domain.response.GetPostsResponse
+import kz.tutorial.jsonplaceholdertypicode.domain.response.GetUserSubscriptionResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -44,6 +46,16 @@ interface MainApi {
     @GET("users/{id}")
     suspend fun getUser(@Path("id") userId: Int): User
 
+    @GET("users/{id}/check_subscription")
+    suspend fun checkUserSubscription(@Path("id") userId: Int,
+                                      @Header("Authorization") token: String?):GetUserSubscriptionResponse
+
+    @GET("users/{id}/subscribers")
+    suspend fun getSubscribers(@Path("id") userId: Int):GetSubResponse
+
+    @GET("users/{id}/subscriptions")
+    suspend fun getSubscriptions(@Path("id") userId: Int):GetSubResponse
+
     @GET("albums")
     suspend fun getAlbums(): List<AlbumRemote>
 
@@ -59,6 +71,14 @@ interface MainApi {
 
     @POST("users/signup")
     suspend fun register(@Body request: RegisterRequest): Response<Any>
+
+    @POST("users/{id}/subscribe")
+    suspend fun subscribe(@Path("id") userId: Int,
+                                    @Header("Authorization") token: String?)
+
+    @POST("users/{id}/unsubscribe")
+    suspend fun unsubscribe(@Path("id") userId: Int,
+                          @Header("Authorization") token: String?)
 
     @POST("posts/add")
     suspend fun addPost(
