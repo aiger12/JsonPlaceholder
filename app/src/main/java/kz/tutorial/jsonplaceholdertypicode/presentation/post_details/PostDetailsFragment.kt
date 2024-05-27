@@ -13,21 +13,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kz.tutorial.jsonplaceholdertypicode.R
-import kz.tutorial.jsonplaceholdertypicode.constants.POST_ID_KEY
-import kz.tutorial.jsonplaceholdertypicode.presentation.comments.CommentsAdapter
-import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
-import kz.tutorial.jsonplaceholdertypicode.presentation.register.TokenManager
-import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import kotlinx.coroutines.launch
+import kz.tutorial.jsonplaceholdertypicode.R
+import kz.tutorial.jsonplaceholdertypicode.constants.POST_ID_KEY
+import kz.tutorial.jsonplaceholdertypicode.presentation.comments.CommentsAdapter
 import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
-import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
+import kz.tutorial.jsonplaceholdertypicode.presentation.register.RetrofitClient
+import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 
 class PostDetailsFragment : Fragment() {
@@ -49,7 +47,7 @@ class PostDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         return inflater.inflate(R.layout.fragment_post_details, container, false)
     }
@@ -64,7 +62,11 @@ class PostDetailsFragment : Fragment() {
         tvShowAll.setOnClickListener {
             val postId = arguments?.getInt(POST_ID_KEY)
             if (postId == null) return@setOnClickListener
-            findNavController().navigate(PostDetailsFragmentDirections.actionPostDetailsToShowAllFragment(postId))
+            findNavController().navigate(
+                PostDetailsFragmentDirections.actionPostDetailsToShowAllFragment(
+                    postId
+                )
+            )
         }
         adapter = PostAdapter(layoutInflater, requireContext(), findNavController())
 
@@ -72,8 +74,8 @@ class PostDetailsFragment : Fragment() {
             val postId = arguments?.getInt(POST_ID_KEY)
             if (postId == null) return@setOnClickListener
 
-            lifecycleScope.launch{
-                var userId = RetrofitClient.apiService.getPost(postId).userId
+            lifecycleScope.launch {
+                val userId = RetrofitClient.apiService.getPost(postId).userId
                 findNavController().navigate(PostDetailsFragmentDirections.actionPostDetailsToUserProfileFragment(userId))
             }
         }
@@ -92,8 +94,11 @@ class PostDetailsFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun formatPostCreationTime(creationTime: String): String {
-        val postCreationDateTime = ZonedDateTime.parse(creationTime).withZoneSameInstant(ZoneId.of("UTC")).withZoneSameInstant(
-            ZoneId.of("UTC+5")).toLocalDateTime()
+        val postCreationDateTime =
+            ZonedDateTime.parse(creationTime).withZoneSameInstant(ZoneId.of("UTC"))
+                .withZoneSameInstant(
+                    ZoneId.of("UTC+5")
+                ).toLocalDateTime()
 
         val currentTime = LocalDateTime.now(ZoneId.of("UTC+5"))
 
@@ -104,34 +109,38 @@ class PostDetailsFragment : Fragment() {
                 val years = duration.toDays() / 365
                 if (years > 1) "$years years ago" else "1 year ago"
             }
+
             duration.toDays() >= 30 -> {
                 val months = duration.toDays() / 30
                 if (months > 1) "$months months ago" else "1 month ago"
             }
+
             duration.toDays() >= 7 -> {
                 val weeks = duration.toDays() / 7
                 if (weeks > 1) "$weeks weeks ago" else "1 week ago"
             }
+
             duration.toDays() > 0 -> {
                 val days = duration.toDays()
                 if (days > 1) "$days days ago" else "1 day ago"
             }
+
             duration.toHours() > 0 -> {
                 val hours = duration.toHours()
                 if (hours > 1) "$hours hours ago" else "1 hour ago"
             }
+
             duration.toMinutes() > 0 -> {
                 val minutes = duration.toMinutes()
                 if (minutes > 1) "$minutes minutes ago" else "1 minute ago"
             }
+
             else -> "Just now"
         }
     }
 
     private fun initAdapter() {
-        commentsAdapter = CommentsAdapter(layoutInflater) { email ->
-            context?.openEmailWithAddress(email)
-        }
+        commentsAdapter = CommentsAdapter(layoutInflater, findNavController(), false)
         adapter = PostAdapter(layoutInflater, requireContext(), findNavController())
     }
 
