@@ -26,40 +26,29 @@ interface MainApi {
 
     @GET("posts")
     suspend fun getPosts(): List<Post>
-
     @GET("posts/{id}")
     suspend fun getPost(@Path("id") postId: Int): Post
     @GET("posts/user/{id}")
     suspend fun getPostsByUserId(@Path("id") postId: Int): GetPostsResponse
-
     @GET("posts/{id}/comments")
     suspend fun getPostComments(@Path("id") postId: Int): List<Comment>
     @GET("posts/{id}/like_count")
     suspend fun getPostLikes(@Path("id") postId: Int): GetPostLikesResponse
-
     @GET("posts/{id}/liked")
     suspend fun getPostLiked(@Path("id") postId: Int,
                              @Header("Authorization") token: String?): GetPostLikedResponse
-
     @GET("users/{id}")
     suspend fun getUser(@Path("id") userId: Int): User
-
     @GET("albums")
     suspend fun getAlbums(): List<AlbumRemote>
-
     @GET("photos")
     suspend fun getAllPhotos(): List<PhotoRemote>
-
-
     @GET("users")
     suspend fun getUsers(): List<User>
-
     @POST("users/login")
     suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
-
     @POST("users/signup")
     suspend fun register(@Body request: RegisterRequest): Response<Any>
-
     @POST("posts/add")
     suspend fun addPost(
         @Header("Authorization") token: String?,
@@ -84,7 +73,6 @@ interface MainApi {
     suspend fun editUser(
         @Header("Authorization") token: String?,
         @Body request: EditUserRequest
-
     ): Response<Any>
 
 }
