@@ -9,9 +9,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import kz.tutorial.jsonplaceholdertypicode.R
 import kz.tutorial.jsonplaceholdertypicode.presentation.extensions.openEmailWithAddress
-import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostAdapter
 import kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragmentDirections
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.ClickListener
 import kz.tutorial.jsonplaceholdertypicode.presentation.utils.SpaceItemDecoration
@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class UsersFragment : Fragment() {
     private val vm: UsersViewModel by viewModel()
 
-    lateinit var rvUsers: RecyclerView
+    lateinit var rvUsers: ViewPager2
 
     lateinit var usersAdapter: UsersAdapter
 
@@ -40,15 +40,12 @@ class UsersFragment : Fragment() {
     }
 
     private fun initViews(view: View) {
-        rvUsers = view.findViewById(R.id.rv_users)
+        rvUsers = view.findViewById(R.id.viewPager)
     }
 
     private fun initAdapter() {
         usersAdapter = UsersAdapter(layoutInflater) { email ->
             context?.openEmailWithAddress(email)
-        }
-        usersAdapter.listener = ClickListener {
-            NavHostFragment.findNavController(this).navigate(UsersFragmentDirections.usersToUserDetails(it.id))
         }
     }
 
@@ -56,7 +53,7 @@ class UsersFragment : Fragment() {
         val currentContext = context ?: return
 
         rvUsers.adapter = usersAdapter
-        rvUsers.layoutManager = LinearLayoutManager(currentContext)
+//        rvUsers.layoutManager = LinearLayoutManager(currentContext)
 
         val spaceItemDecoration =
             SpaceItemDecoration(verticalSpaceInDp = 4, horizontalSpaceInDp = 16)

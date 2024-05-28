@@ -24,9 +24,9 @@ class UserViewModel(private val getUserUseCase: GetUserUseCase, private val id:I
             val user = getUserUseCase.invoke(id)
 
             if (user != null ) {
-                val geo = user.address?.geo
-                val userAddress = user.address
-                address = Uri.parse("geo:" + geo?.lat + "," + geo?.lng + "?q=" + Uri.encode(userAddress?.street + ", " + userAddress?.city + ", " + userAddress?.zipcode))
+//                val geo = user.address?.geo
+//                val userAddress = user.address
+//                address = Uri.parse("geo:" + geo?.lat + "," + geo?.lng + "?q=" + Uri.encode(userAddress?.street + ", " + userAddress?.city + ", " + userAddress?.zipcode))
             } else {
             }
         }
