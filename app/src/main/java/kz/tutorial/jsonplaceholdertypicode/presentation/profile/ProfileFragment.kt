@@ -34,6 +34,8 @@ class ProfileFragment : Fragment() {
     lateinit var btnLogout: Button
     lateinit var myPosts : List<Post>
     lateinit var postCount: TextView
+    lateinit var subscribersCount: TextView
+    lateinit var subscriptionsCount: TextView
 
 
     override fun onCreateView(
@@ -112,6 +114,8 @@ class ProfileFragment : Fragment() {
         btnEditProfile = view.findViewById(R.id.profileButton)
         btnLogout = view.findViewById(R.id.subscribeButton)
         postCount = view.findViewById(R.id.postsNumber)
+        subscribersCount = view.findViewById(R.id.tv_followersNumber)
+        subscriptionsCount = view.findViewById(R.id.tv_followingNumber)
     }
 
     private fun setValues(token: String?){
@@ -124,6 +128,8 @@ class ProfileFragment : Fragment() {
             val response = try {
                 val user = RetrofitClient.apiService.getUser(userId)
                 myPosts = RetrofitClient.apiService.getPostsByUserId(userId).data
+                subscribersCount.text = RetrofitClient.apiService.getSubscribers(userId).metadata.count.toString()
+                subscriptionsCount.text = RetrofitClient.apiService.getSubscriptions(userId).metadata.count.toString()
                 postCount.text = myPosts.size.toString()
                 username.text = user.username
                 name.text = user.name

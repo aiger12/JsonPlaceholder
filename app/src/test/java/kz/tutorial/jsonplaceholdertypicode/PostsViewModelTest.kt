@@ -26,19 +26,13 @@ class GetPostUseCaseImplTest {
     @Test
     fun `invoke() should return post`() {
         val postId = 1
-        val expectedPost = Post("Body", postId, "Title", 1, "2024-05-27")
+        val expectedPost = Post("Body", postId, "Title", 1, "2024-05-28", 0)
 
         runBlocking {
-            // Mock the repository response within a coroutine context
             Mockito.`when`(repository.getPost(postId)).thenReturn(expectedPost)
-
-            // Invoke the use case
             val result = useCase.invoke(postId)
 
-            // Verify that the repository method is called with the correct parameters
             Mockito.verify(repository).getPost(postId)
-
-            // Verify that the result matches the expected post
             assertEquals(expectedPost, result)
         }
     }
