@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menu_posts"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.posts.PostsFragment">
+        android:name="kz.tutorial.nedid.presentation.posts.PostsFragment">
         <action
             android:id="@+id/to_post_details"
             app:destination="@+id/post_details" />
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/post_details"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.post_details.PostDetailsFragment">
+        android:name="kz.tutorial.nedid.presentation.post_details.PostDetailsFragment">
         <argument
             android:name="post_id"
             app:argType="integer"
@@ -39,7 +39,7 @@
 
     <fragment
         android:id="@+id/add_post"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.add_post.AddPostFragment">
+        android:name="kz.tutorial.nedid.presentation.add_post.AddPostFragment">
         <action
             android:id="@+id/action_add_post_to_menu_posts"
             app:destination="@id/menu_posts" />
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/show_all_fragment"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.show_all_comments.ShowAllFragment"
+        android:name="kz.tutorial.nedid.presentation.show_all_comments.ShowAllFragment"
         android:label="ShowAllFragment">
         <argument
             android:name="post_id"
@@ -60,16 +60,16 @@
 
     <fragment
         android:id="@+id/menu_users"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.users.UsersFragment">
+        android:name="kz.tutorial.nedid.presentation.users.UsersFragment">
     </fragment>
 
     <fragment
         android:id="@+id/menu_profile"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.profile.ProfileFragment" />
+        android:name="kz.tutorial.nedid.presentation.profile.ProfileFragment" />
 
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.profile.UserProfileFragment"
+        android:name="kz.tutorial.nedid.presentation.profile.UserProfileFragment"
         tools:layout="@layout/fragment_user_profile">
         <argument
             android:name="user_id"

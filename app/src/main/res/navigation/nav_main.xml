@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.register.LoginFragment">
+        android:name="kz.tutorial.nedid.presentation.register.LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="kz.tutorial.jsonplaceholdertypicode.presentation.register.RegisterFragment"/>
+        android:name="kz.tutorial.nedid.presentation.register.RegisterFragment"/>
 
 <!--    <navigation-->
 <!--        android:id="@+id/nav_second"-->
