@@ -8,9 +8,7 @@
         android:id="@+id/cv_post"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardElevation="4dp"
-        app:cardCornerRadius="30dp"
-        app:cardBackgroundColor="@color/ui_02">
+        app:cardCornerRadius="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +18,7 @@
         android:paddingTop="12dp"
         android:paddingEnd="8dp"
         android:paddingBottom="12dp"
-        android:background="@drawable/backpost">
+        android:background="@drawable/fontbg">
 
         <TextView
             android:id="@+id/tv_title"
@@ -56,7 +54,7 @@
                 android:layout_toEndOf="@id/tv_by"
                 android:fontFamily="@font/ubuntub"
                 android:text="myname"
-                android:textColor="@color/main_01" />
+                android:textColor="@color/main_02" />
         </RelativeLayout>
 
         <TextView
@@ -64,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/sfmedium"
+            android:fontFamily="@font/ubuntulight"
             android:text="2 weeks ago"
             android:textColor="@color/ui_01"
             android:textSize="16sp" />
@@ -84,8 +82,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:text="I am body text"
-                android:fontFamily="@font/interlight"
-                android:textColor="@color/text_03" />
+                android:fontFamily="@font/ubuntul"
+                android:textColor="@color/ui_01" />
 
             <LinearLayout
                 android:id="@+id/right_bar"
@@ -112,7 +110,7 @@
                     android:layout_height="16dp"
                     android:layout_centerInParent="true"
                     android:text=""
-                    android:textColor="@color/main_01"
+                    android:textColor="@color/ui_01"
                     android:textStyle="bold" />
 
 
@@ -131,7 +129,7 @@
                     android:layout_height="16dp"
                     android:layout_centerInParent="true"
                     android:text=""
-                    android:textColor="@color/main_01"
+                    android:textColor="@color/ui_01"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -149,7 +147,7 @@
                     android:layout_height="16dp"
                     android:layout_centerInParent="true"
                     android:text=""
-                    android:textColor="@color/main_01"
+                    android:textColor="@color/ui_01"
                     android:textStyle="bold" />
             </LinearLayout>
         </RelativeLayout>

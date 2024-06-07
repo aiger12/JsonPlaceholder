@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/postbg"
+    android:background="@drawable/fontbg_post_details"
     >
 
 
@@ -59,7 +59,8 @@
                     android:id="@+id/tv_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/main_01"
+                    android:textColor="@color/main_02"
+                    android:fontFamily="@font/ubuntub"
                     style="@style/Body1" />
 
             </LinearLayout>
@@ -71,6 +72,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="32dp"
                 android:textColor="@color/ui_01"
+                android:fontFamily="@font/sfmedium"
                 style="@style/Body1" />
 
             <LinearLayout
