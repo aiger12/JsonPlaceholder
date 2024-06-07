@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.SecondActivity">
+    tools:context=".presentation.SecondActivity"
+    android:background="@color/ui_01">
 
     <TextView
         android:id="@+id/tv_comments"
@@ -56,8 +57,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Post"
+            android:textColor="@color/ui_01"
             android:textSize="10pt"
             android:layout_margin="8dp"
+            android:background="@drawable/subscribe_button_active"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </LinearLayout>

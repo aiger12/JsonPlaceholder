@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/ui_01"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +18,7 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/Header1"
+            android:fontFamily="@font/sfmedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/text_01" />
@@ -29,6 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/tv_author"
+                android:fontFamily="@font/sfmedium"
                 android:text="Author: "
                 android:textColor="@color/text_01" />
 
@@ -38,8 +43,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:fontFamily="@font/ubuntub"
                 android:layout_toEndOf="@id/tv_by"
-                android:textColor="@color/main_01" />
+                android:textColor="@color/links" />
         </RelativeLayout>
 
         <TextView
@@ -48,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="2 weeks ago"
+            android:fontFamily="@font/ubuntul"
             android:textColor="@color/text_01"
             android:textSize="16sp" />
 
@@ -57,8 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/ubuntul"
             android:layout_weight="1"
-            android:textColor="@color/text_02" />
+            android:textColor="@color/text_01" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

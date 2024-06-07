@@ -109,13 +109,11 @@ class UserProfileFragment : Fragment() {
 
     private fun setButtonState() {
         if (isSubscribed == "Not subscribed") {
-            subButton.setTextColor(Color.parseColor("#000000"))
             subButton.text = "Subscribe"
-            subButton.backgroundTintList = ContextCompat.getColorStateList(requireContext(), androidx.cardview.R.color.cardview_light_background)
-        } else {
-            subButton.setTextColor(Color.parseColor("#FFFFFF"))
-            subButton.text = "Unsubscribe"
             subButton.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.main_01)
+        } else {
+            subButton.text = "Unsubscribe"
+            subButton.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.text_02)
         }
 
         val userId = arguments?.getInt("user_id", 0)!!
