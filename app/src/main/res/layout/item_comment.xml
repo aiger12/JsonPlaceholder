@@ -20,6 +20,7 @@
         <TextView
             android:id="@+id/tv_comment_name"
             android:text="username"
+            android:fontFamily="@font/ubuntub"
             style="@style/Header2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
             android:id="@+id/tv_comment_date"
             android:text="2 weeks ago"
             android:textSize="14sp"
+            android:fontFamily="@font/ubuntul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_01"
@@ -47,6 +49,7 @@
             android:id="@+id/tv_body"
             style="@style/Body1"
             android:text="content"
+            android:fontFamily="@font/sfmedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
