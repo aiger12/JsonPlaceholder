@@ -94,7 +94,7 @@
                     android:id="@+id/tv_show_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/ui_01"
+                    android:textColor="@color/main_02"
                     android:fontFamily="@font/ubuntub"
                     android:text="@string/show_all"
                     style="@style/Body1" />
