@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cv_post"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:foreground="?android:attr/selectableItemBackground">
-    <!--    The last line is added to add the ripple effect on click-->
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_post"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/ui_02">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +26,10 @@
             style="@style/Header1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_01" />
+            android:fontFamily="@font/sfmedium"
+            android:text="Hello"
+            android:textColor="@color/ui_01"
+            android:textSize="70px" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,8 +41,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/tv_author"
+                android:fontFamily="@font/sfmedium"
                 android:text="Author: "
-                android:textColor="@color/text_01" />
+                android:textSize="16dp"
+                android:textColor="@color/ui_01" />
 
             <TextView
                 android:id="@+id/tv_author"
@@ -42,6 +53,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/tv_by"
+                android:fontFamily="@font/ubuntub"
+                android:text="myname"
                 android:textColor="@color/main_01" />
         </RelativeLayout>
 
@@ -50,12 +63,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/sfmedium"
             android:text="2 weeks ago"
-            android:textColor="@color/text_01"
+            android:textColor="@color/ui_01"
             android:textSize="16sp" />
 
         <RelativeLayout
             android:id="@+id/main_part"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -67,7 +82,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
-                android:textColor="@color/text_02" />
+                android:text="I am body text"
+                android:fontFamily="@font/interlight"
+                android:textColor="@color/text_03" />
 
             <LinearLayout
                 android:id="@+id/right_bar"
@@ -133,11 +150,8 @@
                     android:text=""
                     android:textColor="@color/main_01"
                     android:textStyle="bold" />
-
             </LinearLayout>
         </RelativeLayout>
-
-
     </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

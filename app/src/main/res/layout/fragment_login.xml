@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbk">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,58 +13,74 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:src="@drawable/ic_profile" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu"
+            android:text="Welcome"
+            android:textColor="@color/main_02"
+            android:textSize="36dp"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/ubuntulight"
+            android:text="Sign in to start"
+            android:textColor="@color/text_02"
+            android:textSize="16dp"></TextView>
+
         <EditText
+            android:id="@+id/username_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/ubuntub"
             android:hint="@string/username"
-            android:textColor="@color/text_01"
-            android:textColorHint="@color/text_02"
-            android:textSize="20sp"
-            android:background="@drawable/rounded_corner"
-            android:padding="18dp"
             android:inputType="text"
-            android:id="@+id/username_input"
-            />
+            android:padding="18dp"
+            android:textColor="@color/ui_01"
+            android:textColorHint="@color/ui_01"
+            android:textSize="20sp"
+            android:backgroundTint="@color/ui_01"/>
+
         <EditText
+            android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/ubuntub"
             android:hint="Password"
-            android:textColor="@color/text_01"
-            android:textColorHint="@color/text_02"
-            android:textSize="20sp"
-            android:background="@drawable/rounded_corner"
-            android:padding="18dp"
             android:inputType="textPassword"
-            android:id="@+id/password_input"
-            />
+            android:padding="18dp"
+            android:textColor="@color/ui_01"
+            android:textColorHint="@color/ui_01"
+            android:backgroundTint="@color/ui_01"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:background="@drawable/rounded_corner"
-            android:backgroundTint="@color/ui_01"
-            android:textColor="@color/text_01"
-            android:padding="18dp"
+            android:layout_height="60dp"
             android:layout_marginTop="32dp"
-            android:textSize="20sp"
-            />
+            android:background="@drawable/rounded_corner"
+            android:text="Login"
+            android:textColor="@color/ui_01"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/ubuntul"
             android:text="Don't have an account? Register"
-            android:textSize="18sp"
             android:textColor="@color/text_01"
-            android:layout_marginTop="32dp" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/login_btn" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,9 +4,10 @@
     <color name="main_01">#A2B2FC</color>
     <color name="main_02">#394F62</color>
     <color name="text_01">#000000</color>
-    <color name="text_02">#979797</color>
+    <color name="text_02">#A09D9D</color>
+    <color name="text_03">#E4D7D7</color>
     <color name="ui_01">#FFFFFF</color>
-    <color name="ui_02">#F7F7F7</color>
+    <color name="ui_02">#00FFFFFF</color>
     <color name="ui_03">#EDEDEF</color>
     <color name="ui_04">#E3E2E7</color>
     <color name="ui_05">#C0BDCB</color>
