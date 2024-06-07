@@ -23,23 +23,14 @@
             android:id="@+id/titleUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Name"
+            android:text="Username"
             android:textColor="@color/text_01"
             android:textSize="18sp"
+            android:fontFamily="@font/ubuntub"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileImg" />
 
-        <TextView
-            android:id="@+id/titleName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:textColor="@color/text_01"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleUsername" />
 
 
         <LinearLayout
@@ -84,6 +75,7 @@
                         android:layout_height="60dp"
                         android:gravity="center"
                         android:text="27"
+                        android:fontFamily="@font/ubuntul"
                         android:textAlignment="center"
                         android:textColor="@color/links"
                         android:textSize="26sp"
@@ -95,6 +87,7 @@
                         android:layout_height="wrap_content"
                         android:text="Posts"
                         android:textAlignment="center"
+                        android:fontFamily="@font/sfmedium"
                         android:textColor="@color/links"
                         android:textSize="16sp" />
 
@@ -115,6 +108,7 @@
                         android:layout_height="60dp"
                         android:gravity="center"
                         android:text="27"
+                        android:fontFamily="@font/ubuntul"
                         android:textAlignment="center"
                         android:textColor="@color/links"
                         android:textSize="26sp"
@@ -127,6 +121,7 @@
                         android:text="Followers"
                         android:textAlignment="center"
                         android:textColor="@color/links"
+                        android:fontFamily="@font/sfmedium"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -148,6 +143,7 @@
                         android:gravity="center"
                         android:text="27"
                         android:textAlignment="center"
+                        android:fontFamily="@font/ubuntul"
                         android:textColor="@color/links"
                         android:textSize="26sp"
                         android:textStyle="bold" />
@@ -159,6 +155,7 @@
                         android:text="Following"
                         android:textAlignment="center"
                         android:textColor="@color/links"
+                        android:fontFamily="@font/sfmedium"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -171,6 +168,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="Subscribe"
+                android:fontFamily="@font/ubuntub"
                 android:textColor="@color/text_01"
                 android:textSize="18sp"
                 app:backgroundTint="@color/cardview_light_background"

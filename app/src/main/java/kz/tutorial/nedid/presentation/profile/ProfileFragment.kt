@@ -23,7 +23,6 @@ import org.json.JSONObject
 
 class ProfileFragment : Fragment() {
     lateinit var username: TextView
-    lateinit var name: TextView
     lateinit var changeUsername: EditText
     lateinit var changeName: EditText
     lateinit var changeLastname: EditText
@@ -104,7 +103,6 @@ class ProfileFragment : Fragment() {
 
     private fun initViews(view: View) {
         username = view.findViewById(R.id.titleUsername)
-        name = view.findViewById(R.id.titleName)
         changeUsername = view.findViewById(R.id.profileUsername)
         changeName = view.findViewById(R.id.profileName)
         changeLastname = view.findViewById(R.id.profileLastname)
@@ -132,7 +130,6 @@ class ProfileFragment : Fragment() {
                 subscriptionsCount.text = RetrofitClient.apiService.getSubscriptions(userId).metadata.count.toString()
                 postCount.text = myPosts.size.toString()
                 username.text = user.username
-                name.text = user.name
                 changeUsername.setText(user.username)
                 changeName.setText(user.name)
                 changeLastname.setText(user.LastName)

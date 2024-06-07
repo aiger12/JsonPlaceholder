@@ -25,7 +25,6 @@ import kz.tutorial.nedid.presentation.utils.SpaceItemDecoration
 
 class UserProfileFragment : Fragment() {
     lateinit var username: TextView
-    lateinit var name: TextView
     lateinit var rvPosts: RecyclerView
     lateinit var postsAdapter: UserPostAdapter
     lateinit var myPosts: List<Post>
@@ -59,7 +58,6 @@ class UserProfileFragment : Fragment() {
 
     private fun initViews(view: View) {
         username = view.findViewById(R.id.titleUsername)
-        name = view.findViewById(R.id.titleName)
         rvPosts = view.findViewById(R.id.rv_posts)
         postCount = view.findViewById(R.id.postsNumber)
         subButton = view.findViewById(R.id.subscribeButton)
@@ -80,7 +78,6 @@ class UserProfileFragment : Fragment() {
                 subscriptionsCount.setText(RetrofitClient.apiService.getSubscriptions(userId).metadata.count.toString())
                 postCount.text = myPosts.size.toString()
                 username.text = user.username
-                name.text = user.name
 
                 postsAdapter.setData(myPosts)
                 setButtonState()
